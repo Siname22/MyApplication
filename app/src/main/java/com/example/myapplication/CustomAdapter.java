@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,9 @@ public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolde
         TextView textView = holder.itemView.findViewById(R.id.namePokemon);
         ImageView imageView =holder.itemView.findViewById(R.id.imagePokemon);
         textView.setText(itm_pkm.get(position).getNombre());
-        Picasso.get().load(Pokedex.urls.get(position)).into(imageView);
+        //Picasso.get().load(Pokedex.urls.get(position)).into(imageView);
+        Uri url= Uri.parse(itm_pkm.get(position).getImgPokemon());
+        imageView.setImageURI(url);
 
 
     }

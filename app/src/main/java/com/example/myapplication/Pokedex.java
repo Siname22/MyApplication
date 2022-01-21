@@ -40,6 +40,7 @@ public class Pokedex extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
 
+
         //Es un paso exclusivo de recylcerView
         recyclerView.setLayoutManager(new GridLayoutManager(this,3,
                 LinearLayoutManager.VERTICAL,false));
@@ -86,7 +87,7 @@ public class Pokedex extends AppCompatActivity {
                         JSONObject pkm = array.getJSONObject(i);
                         nombres.add(pkm.getString("name"));
                         System.out.println(nombres.get(i));
-                        urls.add(pkm.getString("url"));
+                        urls.add("https://assets.pokemon.com/assets7cms2/img/pokedex/full/" + pkm + ".png");
                         System.out.println(urls.get(i));
 
 
@@ -104,6 +105,7 @@ public class Pokedex extends AppCompatActivity {
                         }
                         CustomAdapter adapter = new CustomAdapter(Pokedex.this, pokemons);
                         recyclerView.setAdapter(adapter);
+
                     }
                 });
             }
