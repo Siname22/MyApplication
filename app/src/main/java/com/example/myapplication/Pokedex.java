@@ -2,9 +2,11 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -24,11 +26,12 @@ import java.util.ArrayList;
 public class Pokedex extends AppCompatActivity {
 
     URL urlaaConsumir;
-    ArrayList<String> urls = new ArrayList<>();
+    static ArrayList<String> urls = new ArrayList<>();
     ArrayList<itm_pkm> pokemons = new ArrayList<>();
     ArrayList<String> nombres = new ArrayList<>();
-    static ArrayList<String> urlsImg = new ArrayList<>();
+    //static ArrayList<String> urlsImg = new ArrayList<>();
     RecyclerView recyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +41,20 @@ public class Pokedex extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
 
         //Es un paso exclusivo de recylcerView
-        recyclerView.setLayoutManager(new LinearLayoutManager(this,
-                LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,3,
+                LinearLayoutManager.VERTICAL,false));
 
         //Implementacion extra: Inclusion de divisor para el listado
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL );
         dividerItemDecoration.setDrawable(getDrawable(R.drawable.dividir_color));
         recyclerView.addItemDecoration(dividerItemDecoration);
+        DividerItemDecoration dividerItemDecoration2 = new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL );
+        dividerItemDecoration2.setDrawable(getDrawable(R.drawable.dividir_color));
+        recyclerView.addItemDecoration(dividerItemDecoration);
 
-        CustomAdapter adapter = new CustomAdapter(this, pokemons);
-        recyclerView.setAdapter(adapter);
+
 
 
         try {
@@ -78,14 +84,28 @@ public class Pokedex extends AppCompatActivity {
                     JSONArray array = jsonResultado.getJSONArray("results");
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject pkm = array.getJSONObject(i);
-                        pkm.getString("name");
                         nombres.add(pkm.getString("name"));
                         System.out.println(nombres.get(i));
                         urls.add(pkm.getString("url"));
+                        System.out.println(urls.get(i));
+
+
+                        //pokemons.add(new itm_pkm(nombres.get(i), urls.get(i)));
                     }
                 } catch (IOException | JSONException ioException) {
                     ioException.printStackTrace();
                 }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        for (int i = 0; i < nombres.size(); i++) {
+                            pokemons.add(new itm_pkm(nombres.get(i), urls.get(i)));
+                        }
+                        CustomAdapter adapter = new CustomAdapter(Pokedex.this, pokemons);
+                        recyclerView.setAdapter(adapter);
+                    }
+                });
             }
 
 

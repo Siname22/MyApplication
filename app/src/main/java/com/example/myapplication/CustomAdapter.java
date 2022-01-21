@@ -39,7 +39,8 @@ public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolde
         TextView textView = holder.itemView.findViewById(R.id.namePokemon);
         ImageView imageView =holder.itemView.findViewById(R.id.imagePokemon);
         textView.setText(itm_pkm.get(position).getNombre());
-        Picasso.get().load(Pokedex.urlsImg.get(position)).into(imageView);
+        Picasso.get().load(Pokedex.urls.get(position)).into(imageView);
+
 
     }
 
