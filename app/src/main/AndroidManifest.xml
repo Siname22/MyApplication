@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".itm_pkm"
+            android:name=".Itm_pkm"
             android:exported="true" />
         <activity
             android:name=".Pokedex"

@@ -4,44 +4,38 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
 public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
     Context ctx;
-    ArrayList<itm_pkm> itm_pkm;
+    ArrayList<Itm_pkm> itm_pkm;
 
-    public CustomAdapter(Context ctx, ArrayList<itm_pkm> tareas) {
+    public CustomAdapter(ArrayList<Itm_pkm> pokemos,Context ctx ) {
         this.ctx = ctx;
-        this.itm_pkm = tareas;
+        this.itm_pkm = pokemos;
     }
-    //Se llama cada vex que un item nuevo de la lista se va a ver, y se va a reciclar uno anteiro que ya
-//no se va a ver
+    //Se llama cada vex que un item nuevo de la lista se va a ver,
+    // y se va a reciclar uno anterior que ya no se va a ver
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //Obtenemos el layout que hemos diseñado como tipo "view"
-        View view = LayoutInflater.from(ctx).inflate(R.layout.activity_itm_pkm, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_itm_pkm, null);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
     // Este metodo se llama para poder finalmente mostrar los datos que mantiene el holder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        TextView textView = holder.itemView.findViewById(R.id.namePokemon);
-        ImageView imageView =holder.itemView.findViewById(R.id.imagePokemon);
-        textView.setText(itm_pkm.get(position).getNombre());
-        Picasso.get().load(Pokedex.urls.get(position)).into(imageView);
-
-
+        String name = itm_pkm.get(position).getNombre();
+        holder.name.setText(name);
+        new DownloadImageTask(holder.image).execute(itm_pkm.get(position).getImgPokemon());
     }
 
     @Override
@@ -49,11 +43,13 @@ public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolde
         return itm_pkm.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-
-        public ViewHolder(@NonNull View itemView) {
-
-            super(itemView);
+    public static class ViewHolder extends RecyclerView.ViewHolder{
+        private TextView name;
+        private ImageView image;
+        public ViewHolder(View v) {
+            super(v);
+            name = (TextView) v.findViewById(R.id.namePokemon);
+            image = (ImageView) v.findViewById(R.id.imagePokemon);
         }
     }
 }
