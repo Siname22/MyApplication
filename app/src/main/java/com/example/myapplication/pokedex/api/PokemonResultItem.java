@@ -1,4 +1,4 @@
-package com.example.myapplication.api;
+package com.example.myapplication.pokedex.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

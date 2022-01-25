@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.pokedex;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
+
+import com.example.myapplication.R;
 
 import java.util.ArrayList;
 

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.myapplication.pokedex.Pokedex;
+
 public class MainActivity extends AppCompatActivity {
     Button button;
     @Override
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Intent a = new Intent(MainActivity.this,Pokedex.class);
+                Intent a = new Intent(MainActivity.this, Pokedex.class);
                 startActivity(a);
             }
         });

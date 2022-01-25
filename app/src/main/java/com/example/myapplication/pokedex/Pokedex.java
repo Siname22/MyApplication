@@ -1,21 +1,23 @@
-package com.example.myapplication;
+package com.example.myapplication.pokedex;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 
-import com.example.myapplication.api.PokemonAPIService;
-import com.example.myapplication.api.PokemonResult;
-import com.example.myapplication.api.PokemonResultItem;
+import com.example.myapplication.R;
+import com.example.myapplication.pokedex.api.PokemonAPIService;
+import com.example.myapplication.pokedex.api.PokemonResult;
+import com.example.myapplication.pokedex.api.PokemonResultItem;
 import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,9 +28,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Pokedex extends AppCompatActivity {
 
     private String rutaImagenes;
-    static ArrayList<String> urls = new ArrayList<>();
-    ArrayList<Itm_pkm> pokemons = new ArrayList<>();
-    ArrayList<String> nombres = new ArrayList<>();
     private RecyclerView recyclerView;
 
     @Override
@@ -82,6 +81,16 @@ public class Pokedex extends AppCompatActivity {
             @Override
             public void onFailure(Call<PokemonResult> call, Throwable t) {
                 Log.d("Error", t.toString());
+            }
+        });
+
+        recyclerView.setOnClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(Pokedex.this, PokemonInfo.class);
+                i.putExtra("puntuacion", .get(position));
+                i.putExtra("posicion", position);
+                startActivity(i);
             }
         });
     }
