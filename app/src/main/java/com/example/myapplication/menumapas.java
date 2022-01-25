@@ -18,7 +18,7 @@ public class menumapas extends AppCompatActivity {
         img = findViewById(R.id.sonido1);
     }
     public void silencio(View view){
-        if(com.example.pokeinicio.MainActivity.conSonido)
+        if(com.example.MainActivity.conSonido)
         {
 
             img.setImageResource(R.drawable.sinsonido);

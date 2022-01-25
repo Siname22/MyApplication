@@ -49,7 +49,7 @@ ImageButton img;
     }*/
 
     public void BAyuda(View view){
-        Intent ayuda = new Intent(this, com.example.pokeinicio.Ayuda.class);
+        Intent ayuda = new Intent(this, Ayuda.class);
         startActivity(ayuda);
     }
 
