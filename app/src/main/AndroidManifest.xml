@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myapplication">
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <application
@@ -11,13 +12,33 @@
         android:theme="@style/Theme.MyApplication">
         <activity
             android:name=".pokedex.Itm_pkm"
-            android:exported="true" />
+            android:exported="true"
+            tools:ignore="Instantiatable" />
+
         <activity
             android:name=".pokedex.Pokedex"
             android:exported="true" />
+
         <activity
-            android:name=".Login"
+            android:name=".Menu"
+            android:exported="true" />
+        <activity
+            android:name=".menumapas"
+            android:exported="true" />
+        <activity
+            android:name=".MenuEmulador"
+            android:exported="true"/>
+        <activity
+            android:name=".MenuMochila"
+            android:exported="true"/>
+        <activity
+            android:name=".Ayuda"
+            android:exported="true"/>
+
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

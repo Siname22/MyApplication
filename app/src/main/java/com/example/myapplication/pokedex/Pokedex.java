@@ -84,6 +84,7 @@ public class Pokedex extends AppCompatActivity {
             }
         });
     }
+
 }
 
         /*

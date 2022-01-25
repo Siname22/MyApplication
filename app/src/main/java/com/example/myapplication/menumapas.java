@@ -9,28 +9,37 @@ import androidx.appcompat.app.AppCompatActivity;
 public class menumapas extends AppCompatActivity {
 
     ImageButton img;
-    boolean conSonido = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menumapas);
         img = findViewById(R.id.sonido1);
+
+        if(Menu.conSonido)
+        {
+            img.setImageResource(R.drawable.sonido);
+        }
+        else
+        {
+            img.setImageResource(R.drawable.sinsonido);
+        }
     }
     public void silencio(View view){
-        if(com.example.MainActivity.conSonido)
+        if(Menu.conSonido)
         {
 
             img.setImageResource(R.drawable.sinsonido);
-            com.example.pokeinicio.MainActivity.MediaPlayer.pause();
-            com.example.pokeinicio.MainActivity.conSonido = false;
+            Menu.MediaPlayer.pause();
+            Menu.conSonido = false;
         }
         else
         {
 
             img.setImageResource(R.drawable.sonido);
-            com.example.pokeinicio.MainActivity.MediaPlayer.start();
-            com.example.pokeinicio.MainActivity.conSonido = true;
+           Menu.MediaPlayer.start();
+         Menu.conSonido = true;
         }
 
     }
