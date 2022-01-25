@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
@@ -35,7 +37,9 @@ public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolde
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String name = itm_pkm.get(position).getNombre();
         holder.name.setText(name);
-        new DownloadImageTask(holder.image).execute(itm_pkm.get(position).getImgPokemon());
+        //new DownloadImageTask(holder.image).execute(itm_pkm.get(position).getImgPokemon());
+        Picasso.get().load(itm_pkm.get(position).getImgPokemon()).into(holder.image);
+
     }
 
     @Override
