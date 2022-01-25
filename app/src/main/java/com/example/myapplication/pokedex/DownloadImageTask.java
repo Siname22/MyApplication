@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.pokedex;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

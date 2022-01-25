@@ -1,6 +1,5 @@
-package com.example.myapplication;
+package com.example.myapplication.pokedex;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -9,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.myapplication.api.PokemonAPIService;
-import com.example.myapplication.api.PokemonResult;
-import com.example.myapplication.api.PokemonResultItem;
+import com.example.myapplication.R;
+import com.example.myapplication.pokedex.api.PokemonAPIService;
+import com.example.myapplication.pokedex.api.PokemonResult;
+import com.example.myapplication.pokedex.api.PokemonResultItem;
 import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;

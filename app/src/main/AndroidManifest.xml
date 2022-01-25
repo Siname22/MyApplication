@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".Itm_pkm"
+            android:name=".pokedex.Itm_pkm"
             android:exported="true" />
         <activity
-            android:name=".Pokedex"
+            android:name=".pokedex.Pokedex"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
