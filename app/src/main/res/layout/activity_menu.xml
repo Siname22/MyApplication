@@ -17,10 +17,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/mapas"
-        app:layout_constraintHorizontal_bias="0.346"
+        app:layout_constraintHorizontal_bias="0.242"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titulo"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.007" />
 
     <TextView
         android:id="@+id/mapas"
@@ -80,7 +80,6 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginEnd="72dp"
-        android:layout_marginRight="72dp"
         android:background="#00FFFFFF"
         android:contentDescription="@string/IB"
         android:onClick="Poke"
@@ -102,7 +101,7 @@
         android:onClick="BMapas"
         app:layout_constraintBottom_toTopOf="@+id/mapas"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintHorizontal_bias="0.453"
         app:layout_constraintStart_toEndOf="@+id/pokédex"
         app:layout_constraintTop_toBottomOf="@+id/titulo"
         app:layout_constraintVertical_bias="1.0"
