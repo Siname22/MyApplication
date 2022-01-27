@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.pokedex.api.PokemonAPIService;
@@ -29,7 +30,7 @@ public class Pokedex extends AppCompatActivity {
 
     private String rutaImagenes;
     private RecyclerView recyclerView;
-
+    ArrayList<PokemonResultItem> pokemons;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +45,6 @@ public class Pokedex extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL);
         dividerItemDecoration.setDrawable(getDrawable(R.drawable.dividir_color));
-        recyclerView.addItemDecoration(dividerItemDecoration);
-        DividerItemDecoration dividerItemDecoration2 = new DividerItemDecoration(this,
-                DividerItemDecoration.HORIZONTAL);
-        dividerItemDecoration2.setDrawable(getDrawable(R.drawable.dividir_color));
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         // Llamada a retrofit
@@ -66,13 +63,27 @@ public class Pokedex extends AppCompatActivity {
                 ArrayList<Itm_pkm> items = new ArrayList<>();
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        ArrayList<PokemonResultItem> pokemons = response.body().getResults();
+                        pokemons = response.body().getResults();
                         for (int i = 0; i < pokemons.size(); i++) {
                             items.add(new Itm_pkm(pokemons.get(i).getName(), pokemons.get(i).getUrl()));
                         }
                     }
                     // specify an adapter with the list to show
-                    recyclerView.setAdapter(new CustomAdapter(items, Pokedex.this));
+                    CustomAdapter adapter = new CustomAdapter(items, Pokedex.this);
+                    recyclerView.setAdapter(adapter);
+
+                    adapter.setOnClicklListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(getApplicationContext(),"Seleccion: " +
+                                            pokemons.get(recyclerView.getChildAdapterPosition(view)).
+                                                    getName(), Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(Pokedex.this, PokemonInfo.class);
+                            i.putExtra("posicion", pokemons.get(recyclerView.
+                                    getChildAdapterPosition(view)).getUrl());
+                            startActivity(i);
+                        }
+                    });
                 } else {
                     Log.d("Error", "Something happened");
                 }
@@ -81,16 +92,6 @@ public class Pokedex extends AppCompatActivity {
             @Override
             public void onFailure(Call<PokemonResult> call, Throwable t) {
                 Log.d("Error", t.toString());
-            }
-        });
-
-        recyclerView.setOnClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(Pokedex.this, PokemonInfo.class);
-                i.putExtra("puntuacion", .get(position));
-                i.putExtra("posicion", position);
-                startActivity(i);
             }
         });
     }

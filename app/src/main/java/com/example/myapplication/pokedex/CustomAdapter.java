@@ -16,9 +16,13 @@ import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
-public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+public class CustomAdapter
+        extends RecyclerView.Adapter<CustomAdapter.ViewHolder>
+         implements  View.OnClickListener{
     Context ctx;
     ArrayList<Itm_pkm> itm_pkm;
+    //Creo la variable de view para seleecionar el item
+    private View.OnClickListener listener;
 
     public CustomAdapter(ArrayList<Itm_pkm> pokemos,Context ctx ) {
         this.ctx = ctx;
@@ -31,6 +35,9 @@ public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolde
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //Obtenemos el layout que hemos diseñado como tipo "view"
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_itm_pkm, null);
+
+        view.setOnClickListener(this);
+
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -47,6 +54,18 @@ public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolde
     @Override
     public int getItemCount() {
         return itm_pkm.size();
+    }
+
+    public void  setOnClicklListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        if (listener != null){
+            listener.onClick(view);
+        }
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
