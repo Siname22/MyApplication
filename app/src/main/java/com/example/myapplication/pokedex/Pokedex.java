@@ -5,11 +5,19 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Toast;
+import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.myapplication.R;
+import com.example.myapplication.pokedex.api.PokemonAPIService;
+import com.example.myapplication.pokedex.api.PokemonResult;
+import com.example.myapplication.pokedex.api.PokemonResultItem;
 import com.example.myapplication.Menu;
 import com.example.myapplication.R;
 import com.example.myapplication.pokedex.api.PokemonAPIService;
@@ -28,10 +36,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Pokedex extends AppCompatActivity {
 
     private String rutaImagenes;
-    static ArrayList<String> urls = new ArrayList<>();
-    ArrayList<Itm_pkm> pokemons = new ArrayList<>();
-    ArrayList<String> nombres = new ArrayList<>();
     private RecyclerView recyclerView;
+    ArrayList<PokemonResultItem> pokemons;
     ImageButton img;
 
     @Override
@@ -48,10 +54,6 @@ public class Pokedex extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL);
         dividerItemDecoration.setDrawable(getDrawable(R.drawable.dividir_color));
-        recyclerView.addItemDecoration(dividerItemDecoration);
-        DividerItemDecoration dividerItemDecoration2 = new DividerItemDecoration(this,
-                DividerItemDecoration.HORIZONTAL);
-        dividerItemDecoration2.setDrawable(getDrawable(R.drawable.dividir_color));
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         // Llamada a retrofit
@@ -70,13 +72,27 @@ public class Pokedex extends AppCompatActivity {
                 ArrayList<Itm_pkm> items = new ArrayList<>();
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        ArrayList<PokemonResultItem> pokemons = response.body().getResults();
+                        pokemons = response.body().getResults();
                         for (int i = 0; i < pokemons.size(); i++) {
                             items.add(new Itm_pkm(pokemons.get(i).getName(), pokemons.get(i).getUrl()));
                         }
                     }
                     // specify an adapter with the list to show
-                    recyclerView.setAdapter(new CustomAdapter(items, Pokedex.this));
+                    CustomAdapter adapter = new CustomAdapter(items, Pokedex.this);
+                    recyclerView.setAdapter(adapter);
+
+                    adapter.setOnClicklListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(getApplicationContext(),"Seleccion: " +
+                                            pokemons.get(recyclerView.getChildAdapterPosition(view)).
+                                                    getName(), Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(Pokedex.this, PokemonInfo.class);
+                            i.putExtra("posicion", pokemons.get(recyclerView.
+                                    getChildAdapterPosition(view)).getUrl());
+                            startActivity(i);
+                        }
+                    });
                 } else {
                     Log.d("Error", "Something happened");
                 }
