@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Intent a = new Intent(MainActivity.this, Pokedex.class);
+                Intent a = new Intent(MainActivity.this, Menu.class);
                 startActivity(a);
             }
         });
