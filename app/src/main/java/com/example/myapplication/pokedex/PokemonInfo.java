@@ -15,5 +15,7 @@ public class PokemonInfo extends AppCompatActivity {
         setContentView(R.layout.activity_pokemon_info);
         Intent i = getIntent();
         int posicion = i.getIntExtra("posicion", 0);
+        https://www.youtube.com/watch?v=dnTyV4o_hCI
+        https://github.com/skydoves/Pokedex/blob/main/app/src/main/res/layout/activity_detail.xml
     }
 }
