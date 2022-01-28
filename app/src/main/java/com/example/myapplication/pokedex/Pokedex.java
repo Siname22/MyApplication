@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 
+import com.example.myapplication.Menu;
 import com.example.myapplication.R;
 import com.example.myapplication.pokedex.api.PokemonAPIService;
 import com.example.myapplication.pokedex.api.PokemonResult;
@@ -29,6 +32,7 @@ public class Pokedex extends AppCompatActivity {
     ArrayList<Itm_pkm> pokemons = new ArrayList<>();
     ArrayList<String> nombres = new ArrayList<>();
     private RecyclerView recyclerView;
+    ImageButton img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,8 +87,29 @@ public class Pokedex extends AppCompatActivity {
                 Log.d("Error", t.toString());
             }
         });
+
+        img = findViewById(R.id.sonidopokedex);
+
+        if (Menu.conSonido) {
+            img.setImageResource(R.drawable.sonido);
+        } else {
+            img.setImageResource(R.drawable.sinsonido);
+        }
     }
 
+    public void silencio(View view) {
+        if (Menu.conSonido) {
+            img.setImageResource(R.drawable.sinsonido);
+            Menu.MediaPlayer.pause();
+            Menu.conSonido = false;
+        } else {
+
+            img.setImageResource(R.drawable.sonido);
+            Menu.MediaPlayer.start();
+            Menu.conSonido = true;
+        }
+
+    }
 }
 
         /*
