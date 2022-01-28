@@ -18,16 +18,14 @@
             tools:ignore="Instantiatable" />
 
         <activity
-            android:name=".pokedex.Pokedex"
             android:name=".pokedex.PokemonInfo"
             android:exported="true" />
-        <activity
-            android:name=".pokedex.Itm_pkm"
-            android:exported="true" />
 
+        <activity
+            android:name=".pokedex.Pokedex"
+            android:exported="true" />
         <activity
             android:name=".Menu"
-
             android:exported="true" />
         <activity
             android:name=".menumapas"
