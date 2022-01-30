@@ -17,6 +17,7 @@ import com.example.myapplication.pokedex.api.PokemonAPIService;
 import com.example.myapplication.pokedex.api.PokemonResult;
 import com.example.myapplication.pokedex.api.PokemonResultItem;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
@@ -74,14 +75,36 @@ public class Pokedex extends AppCompatActivity {
 
                     adapter.setOnClicklListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View view) {
-                            Toast.makeText(getApplicationContext(),"Seleccion: " +
-                                            pokemons.get(recyclerView.getChildAdapterPosition(view)).
+                        public void onClick(View v) {
+
+                            Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl(pokemons.get(recyclerView.getChildAdapterPosition(v)).getUrl())
+                                .addConverterFactory(GsonConverterFactory.create(
+                                        new GsonBuilder().serializeNulls().create()
+                                ))
+                                .build();
+
+                            Log.i("url", pokemons.get(recyclerView.getChildAdapterPosition(v)).getUrl());
+
+                            PokemonAPIService pokemonAPIService = retrofit.create(PokemonAPIService.class);
+                            Call<JsonObject> call = pokemonAPIService.getPokemonInfo();
+                            call.enqueue(new Callback<JsonObject>() {
+                                @Override
+                                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                                    Intent i = new Intent(Pokedex.this, PokemonInfo.class);
+                                    Toast.makeText(getApplicationContext(),"Seleccion: " +
+                                            pokemons.get(recyclerView.getChildAdapterPosition(v)).
                                                     getName(), Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(Pokedex.this, PokemonInfo.class);
-                            i.putExtra("posicion", pokemons.get(recyclerView.
-                                    getChildAdapterPosition(view)).getUrl());
-                            startActivity(i);
+                                    Log.i("JSON", response.body().toString());
+                                    i.putExtra("datos", response.body().toString());
+                                    startActivity(i);
+                                }
+
+                                @Override
+                                public void onFailure(Call<JsonObject> call, Throwable t) {
+                                    Log.d("Error", t.toString());
+                                }
+                            });
                         }
                     });
                 } else {

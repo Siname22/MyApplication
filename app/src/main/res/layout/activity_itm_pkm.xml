@@ -9,16 +9,17 @@
 
     <ImageView
         android:id="@+id/imagePokemon"
-        android:layout_width="match_parent"
+        android:layout_width="138dp"
         android:layout_height="109dp" />
 
     <TextView
         android:id="@+id/namePokemon"
         android:layout_width="match_parent"
-        android:layout_height="28dp"
+        android:layout_height="32dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/pokemon4"
         android:gravity="center"
         android:text="TextView"
-        android:textSize="12sp" />
+        android:textAllCaps="true"
+        android:textSize="9sp" />
 </LinearLayout>

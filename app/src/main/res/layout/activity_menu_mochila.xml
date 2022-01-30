@@ -33,8 +33,8 @@
         android:layout_marginRight="14dp"
         android:background="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/namePokemonInfo"
+        app:layout_constraintStart_toStartOf="@+id/namePokemonInfo"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/objetos"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -48,14 +48,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageButton9"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/codePokemon"
         app:layout_constraintTop_toBottomOf="@+id/sonido"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/balls"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/namePokemonInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -67,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/codePokemon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/pokemon4"
@@ -125,7 +125,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/namePokemonInfo"
         app:srcCompat="@drawable/bicibuena"
         tools:ignore="SpeakableTextPresentCheck" />
 
