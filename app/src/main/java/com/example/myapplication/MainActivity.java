@@ -16,21 +16,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        info = findViewById(R.id.button);
+        info.setOnClickListener(new View.OnClickListener() {
 
+
+            @Override
+            public void onClick(View view) {
+                Intent b = new Intent(MainActivity.this, Advertencia.class);//cambiar a la activity de info
+                startActivity(b);
             }
         });
-        info = findViewById(R.id.info);
-        info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                Intent b = new Intent(MainActivity.this,Pokedex.class);//cambiar a la activity de info
-                startActivity(b);
     }
 
-    public void Advertencia(View view){
-        Intent ayuda = new Intent(this, Advertencia.class);
-        startActivity(ayuda);
-    }
+        }
 
-}

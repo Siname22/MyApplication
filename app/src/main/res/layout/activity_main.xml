@@ -12,7 +12,6 @@
         android:layout_width="271dp"
         android:layout_height="88dp"
         android:fontFamily="@font/pokemon4"
-        android:onClick="Advertencia"
         android:text="Login"
         android:textColorLink="#833333"
         android:textSize="24sp"
