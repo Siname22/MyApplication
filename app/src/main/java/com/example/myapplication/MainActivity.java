@@ -10,19 +10,12 @@ import android.widget.Button;
 import com.example.myapplication.pokedex.Pokedex;
 
 public class MainActivity extends AppCompatActivity {
-    Button button;
+
     Button info;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                Intent a = new Intent(MainActivity.this, Menu.class);
-                startActivity(a);
 
             }
         });
@@ -33,8 +26,11 @@ public class MainActivity extends AppCompatActivity {
             {
                 Intent b = new Intent(MainActivity.this,Pokedex.class);//cambiar a la activity de info
                 startActivity(b);
-            }
-        });
+    }
+
+    public void Advertencia(View view){
+        Intent ayuda = new Intent(this, Advertencia.class);
+        startActivity(ayuda);
     }
 
 }

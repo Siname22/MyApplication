@@ -17,58 +17,58 @@
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toTopOf="@+id/descargaemulador"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/tituloemulador" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/descargaemulador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:background="#00FFFFFF"
-        android:onClick="Download_Click"
+        android:onClick="Emulador"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/gamevoydefinitivo"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/descargarojo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
         android:background="#00FFFFFF"
+        android:onClick="Rojo"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:srcCompat="@drawable/pokemonrojo"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/descargamarillo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
         android:background="#00FFFFFF"
+        android:onClick="Amarillo"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:srcCompat="@drawable/pokemonamarillo"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/descargaplata"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:background="#00FFFFFF"
+        android:onClick="plata"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:srcCompat="@drawable/pokemonplata"
@@ -98,9 +98,9 @@
         android:fontFamily="@font/pokemon4"
         android:text="Rojo"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton6"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton4"
-        app:layout_constraintStart_toStartOf="@+id/imageButton6" />
+        app:layout_constraintBottom_toTopOf="@+id/descargaplata"
+        app:layout_constraintEnd_toEndOf="@+id/descargarojo"
+        app:layout_constraintStart_toStartOf="@+id/descargaplata" />
 
     <TextView
         android:id="@+id/textView7"
@@ -117,7 +117,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton6" />
+        app:layout_constraintTop_toBottomOf="@+id/descargaplata" />
 
     <TextView
         android:id="@+id/textView8"
