@@ -11,6 +11,7 @@ import com.example.myapplication.pokedex.Pokedex;
 
 public class MainActivity extends AppCompatActivity {
     Button button;
+    Button info;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +24,15 @@ public class MainActivity extends AppCompatActivity {
                 Intent a = new Intent(MainActivity.this, Menu.class);
                 startActivity(a);
 
+            }
+        });
+        info = findViewById(R.id.info);
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent b = new Intent(MainActivity.this,Pokedex.class);//cambiar a la activity de info
+                startActivity(b);
             }
         });
     }
