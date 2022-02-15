@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,8 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.lang.reflect.Array;
 
 public class PokemonInfo extends AppCompatActivity
 {
@@ -41,10 +44,11 @@ public class PokemonInfo extends AppCompatActivity
         }
     }
 
+        @SuppressLint("LongLogTag")
         void consumirAPI() throws JSONException {
             String pkmName;
             int pesoPokemon = 0;
-            String hp;
+
             nombrePokemon = findViewById(R.id.namePokemonInfo);
             codePokemon = findViewById(R.id.codePokemon);
             imagenPokemon = findViewById(R.id.imagePokemonInfo);
@@ -56,17 +60,15 @@ public class PokemonInfo extends AppCompatActivity
             Log.i("datos",datos );
 
             JSONObject infoPokemon = null;
-                infoPokemon = new JSONObject(datos);
-                pkmName = infoPokemon.getString("name");
-                pesoPokemon = infoPokemon.getInt("weight");
-                //hp = infoPokemon.getJSONObject()
+            infoPokemon = new JSONObject(datos);
+            pkmName = infoPokemon.getString("name");
+            pesoPokemon = infoPokemon.getInt("weight");
+            //hp = infoPokemon.getJSONObject()
 
             //int statsHp = infoPokemon.get("stats").getAsJsonObject().get("base_stat").getAsInt();
+
+
             JSONArray arrayStats = infoPokemon.getJSONArray("stats");
-            for (int j = 0; j < arrayStats.length(); j++) {
-                System.out.println(arrayStats.getJSONObject(j).getInt("base_stat"));
-                System.out.println(arrayStats.getJSONObject(j).getJSONObject("stat").getString("name"));
-            }
 
             Log.i("peso", String.valueOf(pesoPokemon));
             //Log.i("hp", hp);
@@ -99,16 +101,18 @@ public class PokemonInfo extends AppCompatActivity
                     } if (tab.getPosition() == 1){
                         System.out.println("BBBBBBBBBBB");
                         FragmentTransaction transaction = manager.beginTransaction();
-                        PokemonStatsFragment fragment = PokemonStatsFragment.newInstance(
-                                String.valueOf(finalPesoPokemon));
+                        PokemonStatsFragment fragment;
+                        fragment = PokemonStatsFragment.newInstance(
+                                String.valueOf(finalPesoPokemon), arrayStats.toString());
                         transaction.replace(R.id.fragmentContainerView, fragment).commit();
                     }
                 }
 
                 @Override
                 public void onTabUnselected(TabLayout.Tab tab) {
-
-
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    PokemonFragment fragment = PokemonFragment.newInstance(pkmName);
+                    transaction.replace(R.id.fragmentContainerView, fragment).commit();
 
                 }
 
