@@ -70,7 +70,7 @@ public class PokemonStatsFragment extends Fragment {
         TextView statsPeso = view.findViewById(R.id.statsPeso);
         SeekBar seekBarPeso = view.findViewById(R.id.seekBarPeso);
 
-        seekBarPeso.setMax(255);
+        seekBarPeso.setMax(10000);
         // Esto impide que se pueda cambiar el valor asignado
         seekBarPeso.setOnTouchListener(new View.OnTouchListener() {
             @Override

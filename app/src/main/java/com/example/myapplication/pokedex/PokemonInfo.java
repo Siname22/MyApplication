@@ -85,6 +85,7 @@ public class PokemonInfo extends AppCompatActivity
             codePokemon.setText(infoPokemon.getString("id"));
             Log.i("codigo", infoPokemon.getString("id"));
             int finalPesoPokemon = pesoPokemon;
+
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {
@@ -94,6 +95,7 @@ public class PokemonInfo extends AppCompatActivity
                         FragmentTransaction transaction = manager.beginTransaction();
                         PokemonFragment fragment = PokemonFragment.newInstance(pkmName);
                         transaction.replace(R.id.fragmentContainerView, fragment).commit();
+
                     } if (tab.getPosition() == 1){
                         System.out.println("BBBBBBBBBBB");
                         FragmentTransaction transaction = manager.beginTransaction();
@@ -105,25 +107,17 @@ public class PokemonInfo extends AppCompatActivity
 
                 @Override
                 public void onTabUnselected(TabLayout.Tab tab) {
-                    if(tab.getPosition() == 1)
-                    {
-                        System.out.println("HOLAAAAAAAAAAAAAAAAAAAAAAAAAA");
-                        FragmentTransaction transaction = manager.beginTransaction();
-                        PokemonStatsFragment fragment = new PokemonStatsFragment();
-                        transaction.replace(R.id.fragmentContainerView, fragment).commit();
-                    }
+
+
+
                 }
 
                 @Override
                 public void onTabReselected(TabLayout.Tab tab) {
-                    if(tab.getPosition() == 2)
-                    {
-                        System.out.println("HOLAAAAAAAAAAAAAAAAAAAAAAAAAA");
-                        FragmentTransaction transaction = manager.beginTransaction();
-                        //PokemonHabilidadesFragment fragment = new PokemonHabilidadesFragment();
-                        //transaction.replace(R.id.fragmentContainerView, fragment).commit();
-                    }
+
                 }
+
+
             });
         }
 
