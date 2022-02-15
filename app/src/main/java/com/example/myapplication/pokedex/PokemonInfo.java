@@ -52,7 +52,7 @@ public class PokemonInfo extends AppCompatActivity
             statsTab = tabLayout.findViewById(R.id.stats);
             manager = getSupportFragmentManager();
             Intent i = getIntent();
-            String  datos = i.getStringExtra("datos");
+            String datos = i.getStringExtra("datos");
             Log.i("datos",datos );
 
             JSONObject infoPokemon = null;
@@ -84,6 +84,7 @@ public class PokemonInfo extends AppCompatActivity
 
             codePokemon.setText(infoPokemon.getString("id"));
             Log.i("codigo", infoPokemon.getString("id"));
+            int finalPesoPokemon = pesoPokemon;
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {
@@ -92,6 +93,12 @@ public class PokemonInfo extends AppCompatActivity
                         System.out.println("HOLAAAAAAAAAAAAAAAAAAAAAAAAAA");
                         FragmentTransaction transaction = manager.beginTransaction();
                         PokemonFragment fragment = PokemonFragment.newInstance(pkmName);
+                        transaction.replace(R.id.fragmentContainerView, fragment).commit();
+                    } if (tab.getPosition() == 1){
+                        System.out.println("BBBBBBBBBBB");
+                        FragmentTransaction transaction = manager.beginTransaction();
+                        PokemonStatsFragment fragment = PokemonStatsFragment.newInstance(
+                                String.valueOf(finalPesoPokemon));
                         transaction.replace(R.id.fragmentContainerView, fragment).commit();
                     }
                 }
