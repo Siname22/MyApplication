@@ -90,14 +90,21 @@ public class PokemonStatsFragment extends Fragment {
         TextView statsAtq = view.findViewById(R.id.statsAtq);
         SeekBar seekBarAtq = view.findViewById(R.id.seekBarAtq);
 
+        TextView statsDef = view.findViewById(R.id.statsDef);
+        SeekBar seekBarDef = view.findViewById(R.id.seekBarDef);
+
+        TextView statsAtqSpecial = view.findViewById(R.id.statsAtqSpecial);
+        SeekBar seekBarAtqSpecial = view.findViewById(R.id.seekBarAtqSpecial);
+
+        TextView statsDefSpecial = view.findViewById(R.id.statsDefSpecial);
+        SeekBar seekBarDefSpecial = view.findViewById(R.id.seekBarDefSpecial);
+
+        TextView statsSpeed = view.findViewById(R.id.statsSpeed);
+        SeekBar seekBarSpeed = view.findViewById(R.id.seekBarSpeed);
+
         statsPeso.setText("Peso: " + peso);
         // Esto impide que se pueda cambiar el valor asignado
-        seekBarPeso.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                return true;
-            }
-        });
+        seekBarPeso.setOnTouchListener((view1, motionEvent) -> true);
         seekBarPeso.setMax(10000);
         seekBarPeso.setProgress(Integer.parseInt(peso));
 
@@ -106,27 +113,46 @@ public class PokemonStatsFragment extends Fragment {
         try {
             // Vida
             valor = arrayStats.getJSONObject(0).getInt("base_stat");
-            statsVida.setText("Vida: " +  valor);
-            seekBarVida.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View view, MotionEvent motionEvent) {
-                    return true;
-                }
-            });
+            statsVida.setText("HP: " +  valor);
+            seekBarVida.setOnTouchListener((view13, motionEvent) -> true);
             seekBarVida.setMax(1000);
             seekBarVida.setProgress(valor);
 
             // Ataque
             valor = arrayStats.getJSONObject(1).getInt("base_stat");
-            statsAtq.setText("Vida: " +  valor);
-            seekBarAtq.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View view, MotionEvent motionEvent) {
-                    return true;
-                }
-            });
-            seekBarAtq.setMax(1000);
+            statsAtq.setText("Atq: " +  valor);
+            seekBarAtq.setOnTouchListener((view12, motionEvent) -> true);
+            seekBarAtq.setMax(3024);
             seekBarAtq.setProgress(valor);
+
+            // Defensa
+            valor = arrayStats.getJSONObject(2).getInt("base_stat");
+            statsDef.setText("Def: " +  valor);
+            seekBarDef.setOnTouchListener((view12, motionEvent) -> true);
+            seekBarDef.setMax(2760);
+            seekBarDef.setProgress(valor);
+
+            // Ataque Especial
+            valor = arrayStats.getJSONObject(3).getInt("base_stat");
+            statsAtqSpecial.setText("AtqEsp: " +  valor);
+            seekBarAtqSpecial.setOnTouchListener((view12, motionEvent) -> true);
+            seekBarAtqSpecial.setMax(3024);
+            seekBarAtqSpecial.setProgress(valor);
+
+            // Defensa Especial
+            valor = arrayStats.getJSONObject(4).getInt("base_stat");
+            statsDef.setText("DefEsp.: " +  valor);
+            seekBarDefSpecial.setOnTouchListener((view12, motionEvent) -> true);
+            seekBarDefSpecial.setMax(5526);
+            seekBarDefSpecial.setProgress(valor);
+
+            // Velocidad
+            valor = arrayStats.getJSONObject(5).getInt("base_stat");
+            statsSpeed.setText("Speed: " +  valor);
+            seekBarSpeed.setOnTouchListener((view12, motionEvent) -> true);
+            seekBarSpeed.setMax(8664);
+            seekBarSpeed.setProgress(valor);
+
 
         } catch (JSONException e) {
             e.printStackTrace();

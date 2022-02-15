@@ -11,19 +11,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/statsVida"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_width="174dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/pokemon4"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:text="TextView"
+            android:textAlignment="center" />
 
         <SeekBar
             android:id="@+id/seekBarVida"
+            style="@android:style/Widget.Toolbar.Button.Navigation"
             android:layout_width="237dp"
             android:layout_height="23dp"
             android:background="#00AE3434"
+            android:foregroundGravity="center"
             android:max="255"
             android:progressBackgroundTint="#AB8AE6"
             android:scrollbarSize="8dp"
@@ -33,16 +43,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
 
         <TextView
             android:id="@+id/statsPeso"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_width="174dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/pokemon4"
+            android:text="@string/statsPeso"
+            android:textAlignment="center" />
 
         <SeekBar
             android:id="@+id/seekBarPeso"
+            style="@android:style/Widget.Toolbar.Button.Navigation"
             android:layout_width="237dp"
             android:layout_height="23dp"
             android:background="#00AE3434"
@@ -55,16 +70,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
 
         <TextView
             android:id="@+id/statsAtq"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_width="177dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/pokemon4"
+            android:text="TextView"
+            android:textAlignment="center" />
 
         <SeekBar
             android:id="@+id/seekBarAtq"
+            style="@android:style/Widget.Toolbar.Button.Navigation"
             android:layout_width="237dp"
             android:layout_height="23dp"
             android:background="#00AE3434"
@@ -78,16 +98,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
 
         <TextView
             android:id="@+id/statsDef"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_width="178dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/pokemon4"
+            android:text="TextView"
+            android:textAlignment="center" />
 
         <SeekBar
             android:id="@+id/seekBarDef"
+            style="@android:style/Widget.Toolbar.Button.Navigation"
             android:layout_width="237dp"
             android:layout_height="23dp"
             android:background="#00AE3434"
@@ -100,17 +125,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
 
         <TextView
             android:id="@+id/statsAtqSpecial"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_width="178dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/pokemon4"
+            android:text="TextView"
+            android:textAlignment="center" />
 
         <SeekBar
             android:id="@+id/seekBarAtqSpecial"
-            style="@android:style/Widget.SeekBar"
+            style="@android:style/Widget.Toolbar.Button.Navigation"
             android:layout_width="237dp"
             android:layout_height="23dp"
             android:background="#00AE3434"
@@ -120,5 +149,60 @@
             android:scrollbarSize="8dp"
             android:thumb="@drawable/image" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/statsDefSpecial"
+            android:layout_width="178dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/pokemon4"
+            android:text="TextView"
+            android:textAlignment="center" />
+
+        <SeekBar
+            android:id="@+id/seekBarDefSpecial"
+            style="@android:style/Widget.Toolbar.Button.Navigation"
+            android:layout_width="237dp"
+            android:layout_height="23dp"
+            android:background="#00AE3434"
+            android:max="255"
+            android:progress="50"
+            android:progressBackgroundTint="#AB8AE6"
+            android:scrollbarSize="8dp"
+            android:thumb="@drawable/image" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/statsSpeed"
+            android:layout_width="178dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/pokemon4"
+            android:text="TextView"
+            android:textAlignment="center" />
+
+        <SeekBar
+            android:id="@+id/seekBarSpeed"
+            style="@android:style/Widget.Toolbar.Button.Navigation"
+            android:layout_width="237dp"
+            android:layout_height="23dp"
+            android:background="#00AE3434"
+            android:max="255"
+            android:progress="50"
+            android:progressBackgroundTint="#AB8AE6"
+            android:scrollbarSize="8dp"
+            android:thumb="@drawable/image" />
+    </LinearLayout>
+
 
 </LinearLayout>
