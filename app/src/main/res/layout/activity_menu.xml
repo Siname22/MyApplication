@@ -147,7 +147,6 @@
         android:layout_width="89dp"
         android:layout_height="90dp"
         android:layout_marginStart="313dp"
-        android:layout_marginLeft="313dp"
         android:background="#00FFFFFF"
         android:onClick="silencio"
         app:layout_constraintBottom_toBottomOf="parent"

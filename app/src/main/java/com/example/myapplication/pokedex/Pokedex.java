@@ -12,7 +12,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.SearchView;
 import android.widget.Toast;
+import android.view.View;
+import android.widget.ImageButton;
 
+import com.example.myapplication.R;
+import com.example.myapplication.pokedex.api.PokemonAPIService;
+import com.example.myapplication.pokedex.api.PokemonResult;
+import com.example.myapplication.pokedex.api.PokemonResultItem;
+import com.example.myapplication.Menu;
 import com.example.myapplication.R;
 import com.example.myapplication.pokedex.api.PokemonAPIService;
 import com.example.myapplication.pokedex.api.PokemonResult;
@@ -33,6 +40,8 @@ public class Pokedex extends AppCompatActivity implements SearchView.OnQueryText
 
     private RecyclerView recyclerView;
     ArrayList<PokemonResultItem> pokemons;
+    ImageButton img;
+
     SearchView searchView;
     CustomAdapter adapter;
 
@@ -127,12 +136,33 @@ public class Pokedex extends AppCompatActivity implements SearchView.OnQueryText
     @Override
     public boolean onQueryTextSubmit(String s) {
         return false;
+
+        img = findViewById(R.id.sonidopokedex);
+
+        if (Menu.conSonido) {
+            img.setImageResource(R.drawable.sonido);
+        } else {
+            img.setImageResource(R.drawable.sinsonido);
+        }
     }
 
     @Override
     public boolean onQueryTextChange(String s) {
         adapter.filtrado(s);
     return false;
+    }
+    public void silencio(View view) {
+        if (Menu.conSonido) {
+            img.setImageResource(R.drawable.sinsonido);
+            Menu.MediaPlayer.pause();
+            Menu.conSonido = false;
+        } else {
+
+            img.setImageResource(R.drawable.sonido);
+            Menu.MediaPlayer.start();
+            Menu.conSonido = true;
+        }
+
     }
 }
 

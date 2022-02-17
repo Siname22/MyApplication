@@ -9,8 +9,8 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="224dp"
-        android:layout_height="110dp"
+        android:layout_width="271dp"
+        android:layout_height="88dp"
         android:fontFamily="@font/pokemon4"
         android:text="Login"
         android:textColorLink="#833333"

@@ -20,10 +20,11 @@
         app:srcCompat="@drawable/ayudatitulo" />
 
     <ImageButton
-        android:id="@+id/imageButton17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/sonidoayuda"
+        android:layout_width="89dp"
+        android:layout_height="90dp"
         android:background="#00FFFFFF"
+        android:onClick="silencio"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.996"
@@ -50,13 +51,13 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/clicar"
                 android:layout_width="188dp"
                 android:layout_height="79dp"
                 app:srcCompat="@drawable/pokedex" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/enseñar"
                 android:layout_width="411dp"
                 android:layout_height="101dp"
                 android:fontFamily="sans-serif-condensed"
@@ -89,6 +90,20 @@
                 android:layout_height="126dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="En este apartado podemos encontrar los diversos mapas y zonas que existen por el universo Pokémon y si clikamos en uno de estos mapas nos dará informacion sobre este"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="188dp"
+                android:layout_height="79dp"
+                app:srcCompat="@drawable/titulomochila" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="En este apartado podemos encontrar todos los objetos que se puden almacenar en la mochila dentro del juego y si clikamos en estos nos darán mas información sobre ellos"
                 android:textSize="20sp" />
 
         </LinearLayout>

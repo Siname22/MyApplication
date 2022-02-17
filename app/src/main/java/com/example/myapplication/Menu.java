@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.pokedex.Pokedex;
 
+import java.sql.SQLOutput;
+
 public class Menu extends AppCompatActivity {
 
 ImageButton img;
@@ -25,36 +27,22 @@ ImageButton img;
         MediaPlayer.start();
         img = findViewById(R.id.imageButton7);
 
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
         if(conSonido)
         {
             img.setImageResource(R.drawable.sonido);
         }
         else
         {
+            System.out.println("MENU SIN SONIDO");
             img.setImageResource(R.drawable.sinsonido);
         }
     }
 
-   /* @Override
-    protected void onResume() {
-        super.onResume();
-        MediaPlayer.start();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        MediaPlayer.pause();
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        MediaPlayer.stop();
-        MediaPlayer.release();
-    }
-*/
     public void BAyuda(View view){
         Intent ayuda = new Intent(this, Ayuda.class);
         startActivity(ayuda);
