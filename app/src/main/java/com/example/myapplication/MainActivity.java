@@ -4,17 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     Button log;
-    Button register;
     EditText name;
     EditText email;
     EditText password;
+
+    boolean nValido = false;
+    boolean eValido = false;
+    boolean pValido = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,29 +30,108 @@ public class MainActivity extends AppCompatActivity {
         name=findViewById(R.id.txtName);
         password=findViewById(R.id.Password);
 
+
         log=findViewById(R.id.login);
-        register=findViewById(R.id.register);
+        log.setEnabled(false);
+        name.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
 
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String nombreIntroducido = editable.toString();
+
+                if(!nombreIntroducido.equals(""))
+                {
+                    nValido = true;
+                    if(pValido && eValido)
+                    {
+                        log.setEnabled(true);
+                    }
+                }
+                else
+                {
+                    nValido = false;
+                    log.setEnabled(false);
+                }
+
+            }
+        });
+        email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String emailIntroducido = editable.toString();
+                char[] caracs = emailIntroducido.toCharArray();
+                eValido = false;
+                log.setEnabled(false);
+                for (int i = 0; i < caracs.length; i++) {
+                    if(caracs[i] == '@' && !name.getText().toString().equals("") && !password.getText().toString().equals(""))
+                    {
+                        System.out.println("sdfsdfsd");
+                        eValido = true;
+                        if(pValido && nValido)
+                        {
+                            log.setEnabled(true);
+                        }
+                        break;
+                    }
+                }
+            }
+        });
+        password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String psswd = editable.toString();
+
+                if(!psswd.equals(""))
+                {
+                    pValido = true;
+                    if(eValido && nValido)
+                    {
+                        log.setEnabled(true);
+                    }
+                }
+                else
+                {
+                    pValido = false;
+                    log.setEnabled(false);
+                }
+            }
+        });
     }
-    void activarButtons()
+
+
+    public void Login(View view)
     {
-        if (email.getText().equals("") | name.getText().equals("")|password.getText().equals(""))
-        {
-            log.setEnabled(true);
-            register.setEnabled(false);
-        }
+        Intent intent=new Intent(this,Menu.class);
+        startActivity(intent);
     }
 
-    public void Register(View view){
-
-        Intent registro = new Intent(this, Register.class);
-        startActivity(registro);
-    }
-    public void Login(View view){
-
-        Intent log = new Intent(this, Menu.class);
-        startActivity(log);
-    }
 }

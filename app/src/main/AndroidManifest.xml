@@ -14,9 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity
-            android:name=".Register"
-            android:exported="true" />
+
         <activity
             android:name=".Advertencia"
             android:exported="true" />
