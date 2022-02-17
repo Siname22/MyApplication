@@ -9,7 +9,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
     EditText name;
     EditText email;
     EditText password;
-
     boolean nValido = false;
     boolean eValido = false;
     boolean pValido = false;
@@ -29,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         email=findViewById(R.id.EmailAddress);
         name=findViewById(R.id.txtName);
         password=findViewById(R.id.Password);
-
 
         log=findViewById(R.id.login);
         log.setEnabled(false);
@@ -47,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 String nombreIntroducido = editable.toString();
-
                 if(!nombreIntroducido.equals(""))
                 {
                     nValido = true;
