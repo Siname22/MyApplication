@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
@@ -27,18 +28,21 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Pokedex extends AppCompatActivity {
+public class Pokedex extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
-    private String rutaImagenes;
+
     private RecyclerView recyclerView;
     ArrayList<PokemonResultItem> pokemons;
+    SearchView searchView;
+    CustomAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pokedex);
 
         recyclerView = findViewById(R.id.recyclerView);
-
+        searchView = findViewById(R.id.searchView);
         //Es un paso exclusivo de recylcerView
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
@@ -70,7 +74,7 @@ public class Pokedex extends AppCompatActivity {
                         }
                     }
                     // specify an adapter with the list to show
-                    CustomAdapter adapter = new CustomAdapter(items, Pokedex.this);
+                    adapter = new CustomAdapter(items, Pokedex.this);
                     recyclerView.setAdapter(adapter);
 
                     adapter.setOnClicklListener(new View.OnClickListener() {
@@ -117,6 +121,18 @@ public class Pokedex extends AppCompatActivity {
                 Log.d("Error", t.toString());
             }
         });
+        searchView.setOnQueryTextListener(this) ;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        adapter.filtrado(s);
+    return false;
     }
 }
 

@@ -27,7 +27,6 @@ public class PokemonStatsFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "peso";
     private static final String ARG_PARAM2 = "arrayStats";
-    private static final String ARG_PARAM3 = "vida";
 
 
     // TODO: Rename and change types of parameters
@@ -90,8 +89,8 @@ public class PokemonStatsFragment extends Fragment {
         TextView statsAtq = view.findViewById(R.id.statsAtq);
         SeekBar seekBarAtq = view.findViewById(R.id.seekBarAtq);
 
-        TextView statsDef = view.findViewById(R.id.statsDef);
-        SeekBar seekBarDef = view.findViewById(R.id.seekBarDef);
+        TextView statsDef = view.findViewById(R.id.statsDefensa);
+        SeekBar seekBarDef = view.findViewById(R.id.seekBarDefensa);
 
         TextView statsAtqSpecial = view.findViewById(R.id.statsAtqSpecial);
         SeekBar seekBarAtqSpecial = view.findViewById(R.id.seekBarAtqSpecial);
@@ -108,49 +107,49 @@ public class PokemonStatsFragment extends Fragment {
         seekBarPeso.setMax(10000);
         seekBarPeso.setProgress(Integer.parseInt(peso));
 
-
         int valor = 0;
         try {
             // Vida
             valor = arrayStats.getJSONObject(0).getInt("base_stat");
             statsVida.setText("HP: " +  valor);
             seekBarVida.setOnTouchListener((view13, motionEvent) -> true);
-            seekBarVida.setMax(1000);
+            seekBarVida.setMax(256);
             seekBarVida.setProgress(valor);
 
             // Ataque
             valor = arrayStats.getJSONObject(1).getInt("base_stat");
             statsAtq.setText("Atq: " +  valor);
             seekBarAtq.setOnTouchListener((view12, motionEvent) -> true);
-            seekBarAtq.setMax(3024);
+            seekBarAtq.setMax(256);
             seekBarAtq.setProgress(valor);
 
             // Defensa
             valor = arrayStats.getJSONObject(2).getInt("base_stat");
+            System.out.println("Defensa" + valor);
             statsDef.setText("Def: " +  valor);
             seekBarDef.setOnTouchListener((view12, motionEvent) -> true);
-            seekBarDef.setMax(2760);
+            seekBarDef.setMax(256);
             seekBarDef.setProgress(valor);
 
             // Ataque Especial
             valor = arrayStats.getJSONObject(3).getInt("base_stat");
             statsAtqSpecial.setText("AtqEsp: " +  valor);
             seekBarAtqSpecial.setOnTouchListener((view12, motionEvent) -> true);
-            seekBarAtqSpecial.setMax(3024);
+            seekBarAtqSpecial.setMax(256);
             seekBarAtqSpecial.setProgress(valor);
 
             // Defensa Especial
             valor = arrayStats.getJSONObject(4).getInt("base_stat");
-            statsDef.setText("DefEsp.: " +  valor);
+            statsDefSpecial.setText("DefEsp.: " +  valor);
             seekBarDefSpecial.setOnTouchListener((view12, motionEvent) -> true);
-            seekBarDefSpecial.setMax(5526);
+            seekBarDefSpecial.setMax(256);
             seekBarDefSpecial.setProgress(valor);
 
             // Velocidad
             valor = arrayStats.getJSONObject(5).getInt("base_stat");
             statsSpeed.setText("Speed: " +  valor);
             seekBarSpeed.setOnTouchListener((view12, motionEvent) -> true);
-            seekBarSpeed.setMax(8664);
+            seekBarSpeed.setMax(256);
             seekBarSpeed.setProgress(valor);
 
 
