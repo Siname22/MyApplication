@@ -23,14 +23,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Intent a = new Intent(MainActivity.this, Menu.class);
-                startActivity(a);
-            public void onClick(View view) {
+
                 Intent b = new Intent(MainActivity.this, Advertencia.class);//cambiar a la activity de info
                 startActivity(b);
             }
         });
     }
-
-        }
+}
 

@@ -1,6 +1,7 @@
 package com.example.myapplication.pokedex;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,15 @@ public class CustomAdapter
          implements  View.OnClickListener{
     Context ctx;
     ArrayList<Itm_pkm> itm_pkm;
+
+    public ArrayList<Itm_pkm> getItm_pkm() {
+        return itm_pkm;
+    }
+
+    public void setItm_pkm(ArrayList<Itm_pkm> itm_pkm) {
+        this.itm_pkm = itm_pkm;
+    }
+
     ArrayList<Itm_pkm> itm_pkmOriginal;
 
     //Creo la variable de view para seleecionar el item
@@ -61,23 +71,25 @@ public class CustomAdapter
     }
 
     public void filtrado(String txtBuscar){
+        ArrayList<Itm_pkm> itm_pkm_busqueda = new ArrayList<>();
         int longitud = txtBuscar.length();
         if (longitud == 0){
             itm_pkm.clear();
             itm_pkm.addAll(itm_pkmOriginal);
         }else{
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                List<Itm_pkm> collecion = itm_pkm.stream().filter(i -> i.getNombre().toLowerCase().
+                List<Itm_pkm> collecion = itm_pkmOriginal.stream().filter(i -> i.getNombre().toLowerCase().
                         contains(txtBuscar.toLowerCase())).collect(Collectors.toList());
-                itm_pkm.clear();
-                itm_pkm.addAll(collecion);
+                itm_pkm_busqueda.addAll(collecion);
             } else {
                 for (Itm_pkm pokemon: itm_pkmOriginal){
                     if (pokemon.getNombre().toLowerCase().contains(txtBuscar.toLowerCase())){
-                        itm_pkm.add(pokemon);
+                        itm_pkm_busqueda.add(pokemon);
                     }
                 }
             }
+            itm_pkm.clear();
+            itm_pkm.addAll(itm_pkm_busqueda);
         }
         notifyDataSetChanged();
     }

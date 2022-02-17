@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -49,9 +50,12 @@ public class Pokedex extends AppCompatActivity implements SearchView.OnQueryText
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pokedex);
-
+        img = findViewById(R.id.sonidopokedex);
         recyclerView = findViewById(R.id.recyclerView);
         searchView = findViewById(R.id.searchView);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
         //Es un paso exclusivo de recylcerView
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
@@ -89,15 +93,15 @@ public class Pokedex extends AppCompatActivity implements SearchView.OnQueryText
                     adapter.setOnClicklListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
+                            Log.i("Lo que cojo", String.valueOf(recyclerView.getChildAdapterPosition(v)));
                             Retrofit retrofit = new Retrofit.Builder()
-                                .baseUrl(pokemons.get(recyclerView.getChildAdapterPosition(v)).getUrl())
+                                .baseUrl(adapter.getItm_pkm().get(recyclerView.getChildAdapterPosition(v)).getUrl())
                                 .addConverterFactory(GsonConverterFactory.create(
                                         new GsonBuilder().serializeNulls().create()
                                 ))
                                 .build();
 
-                            Log.i("url", pokemons.get(recyclerView.getChildAdapterPosition(v)).getUrl());
+                            Log.i("url", adapter.getItm_pkm().get(recyclerView.getChildAdapterPosition(v)).getUrl());
 
                             PokemonAPIService pokemonAPIService = retrofit.create(PokemonAPIService.class);
                             Call<JsonObject> call = pokemonAPIService.getPokemonInfo();
@@ -106,8 +110,8 @@ public class Pokedex extends AppCompatActivity implements SearchView.OnQueryText
                                 public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                                     Intent i = new Intent(Pokedex.this, PokemonInfo.class);
                                     Toast.makeText(getApplicationContext(),"Seleccion: " +
-                                            pokemons.get(recyclerView.getChildAdapterPosition(v)).
-                                                    getName(), Toast.LENGTH_SHORT).show();
+                                            adapter.getItm_pkm().get(recyclerView.getChildAdapterPosition(v)).
+                                                    getNombre(), Toast.LENGTH_SHORT).show();
                                     Log.i("JSON", response.body().toString());
                                     i.putExtra("datos", response.body().toString());
                                     startActivity(i);
@@ -135,21 +139,18 @@ public class Pokedex extends AppCompatActivity implements SearchView.OnQueryText
 
     @Override
     public boolean onQueryTextSubmit(String s) {
-        return false;
-
-        img = findViewById(R.id.sonidopokedex);
-
         if (Menu.conSonido) {
             img.setImageResource(R.drawable.sonido);
         } else {
             img.setImageResource(R.drawable.sinsonido);
         }
+        return false;
     }
 
     @Override
     public boolean onQueryTextChange(String s) {
         adapter.filtrado(s);
-    return false;
+        return false;
     }
     public void silencio(View view) {
         if (Menu.conSonido) {
