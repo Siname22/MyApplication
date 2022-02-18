@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -14,11 +15,13 @@ public class MainActivity extends AppCompatActivity {
 
     Button log;
     EditText name;
-    EditText email;
+    static EditText email;
     EditText password;
     boolean nValido = false;
     boolean eValido = false;
     boolean pValido = false;
+    static String nombreIntroducido;
+    static String psswd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
 
         log=findViewById(R.id.login);
         log.setEnabled(false);
+
+        HiloLogin login=new HiloLogin();
+        login.run();
+
         name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -43,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                String nombreIntroducido = editable.toString();
+                nombreIntroducido = editable.toString();
                 if(!nombreIntroducido.equals(""))
                 {
                     nValido = true;
@@ -51,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     {
                         log.setEnabled(true);
                     }
+
                 }
                 else
                 {
@@ -58,11 +66,13 @@ public class MainActivity extends AppCompatActivity {
                     log.setEnabled(false);
                 }
 
+
             }
         });
         email.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
 
             }
 
@@ -91,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
         password.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -104,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                String psswd = editable.toString();
+                 psswd = editable.toString();
 
                 if(!psswd.equals(""))
                 {
@@ -123,6 +134,18 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    static class activarEmail implements Runnable
+    {
+        EditText email=MainActivity.email;
+        @Override
+        public void run()
+        {
+            while (!nombreIntroducido.equals("")&&!psswd.equals(""))
+            {
+                email.setEnabled(true);
+            }
+        }
+    }
 
     public void Login(View view)
     {
