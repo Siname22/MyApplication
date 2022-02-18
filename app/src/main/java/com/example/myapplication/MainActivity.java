@@ -34,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
         log=findViewById(R.id.login);
         log.setEnabled(false);
 
-        HiloLogin login=new HiloLogin();
-        login.run();
+
 
         name.addTextChangedListener(new TextWatcher() {
             @Override
@@ -96,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
                         {
                             log.setEnabled(true);
                         }
+                        else
+                            {
+                                log.setEnabled(false);
+                            }
                         break;
                     }
                 }
@@ -134,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    static class activarEmail implements Runnable
+    /*static class activarEmail implements Runnable
     {
         EditText email=MainActivity.email;
         @Override
@@ -145,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 email.setEnabled(true);
             }
         }
-    }
+    }*/
 
     public void Login(View view)
     {
