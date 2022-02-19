@@ -134,14 +134,14 @@
                 android:background="#00FFFFFF"
                 android:contentDescription="@string/IB"
                 android:onClick="BEmulador"
-                app:srcCompat="@drawable/gamevoydefinitivo" />
+                app:srcCompat="@drawable/pokemonamarillo" />
 
             <TextView
                 android:id="@+id/emulador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pokemon4"
-                android:text="Emulador"
+                android:text="Juegos"
                 android:textSize="24sp" />
         </LinearLayout>
 
@@ -153,8 +153,8 @@
 
             <ImageButton
                 android:id="@+id/imagenmochila"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
                 android:background="#00FFFFFF"
                 android:contentDescription="@string/IB"
                 android:onClick="BMochila"
