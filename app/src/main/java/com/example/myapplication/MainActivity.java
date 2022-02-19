@@ -4,24 +4,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
     Button log;
     EditText name;
-    static EditText email;
     EditText password;
-    boolean nValido = false;
+    static EditText email;
+    String emailComprovado;
+    String nameComprovado;
+    String psswdComprovado;
+
+    /*boolean nValido = false;
     boolean eValido = false;
     boolean pValido = false;
     static String nombreIntroducido;
-    static String psswd;
+    static String psswd;*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +36,11 @@ public class MainActivity extends AppCompatActivity {
         password=findViewById(R.id.Password);
 
         log=findViewById(R.id.login);
-        log.setEnabled(false);
+        //log.setEnabled(false);
 
 
 
-        name.addTextChangedListener(new TextWatcher() {
+        /*name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -134,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                     log.setEnabled(false);
                 }
             }
-        });
+        });*/
     }
 
     /*static class activarEmail implements Runnable
@@ -150,10 +154,33 @@ public class MainActivity extends AppCompatActivity {
         }
     }*/
 
+    void comprovarEmail()
+    {
+        char[] caracs = email.getText().toString().toCharArray();
+        for (int i = 0; i < caracs.length; i++) {
+            if(caracs[i] == '@')
+            {
+                emailComprovado= Arrays.toString(caracs);
+            }else {
+                emailComprovado="";
+            }
+        }
+    }
+
     public void Login(View view)
     {
-        Intent intent=new Intent(this,Menu.class);
-        startActivity(intent);
+        comprovarEmail();
+
+        if (name.getText().toString().equals("") || email.getText().toString().equals("") || password.getText().toString().equals(""))
+        {
+            Toast.makeText(this, "ERROR:Invalid name, password or email", Toast.LENGTH_SHORT).show();
+        }else if (!name.getText().toString().equals("") && !emailComprovado.equals("") && !password.getText().toString().equals("")){
+            Toast.makeText(this, "Sussecfull login", Toast.LENGTH_SHORT).show();
+            Intent intent=new Intent(this,Menu.class);
+            startActivity(intent);
+        }
+
+
     }
 
 }
