@@ -9,15 +9,23 @@ import android.widget.Button;
 
 
 public class Advertencia extends AppCompatActivity {
-
+    Button info;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advertencia);
+        info = findViewById(R.id.button);
+        info.setOnClickListener(new View.OnClickListener() {
 
+
+            @Override
+            public void onClick(View view)
+            {
+
+                Intent b = new Intent(Advertencia.this, Menu.class);//cambiar a la activity de info
+                startActivity(b);
+            }
+        });
     }
-    public void Aceptar(View view){
-        Intent ayuda = new Intent(this, Menu.class);
-        startActivity(ayuda);
-    }
+
 }

@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -25,7 +26,10 @@ public class MenuMochila extends AppCompatActivity {
             img.setImageResource(R.drawable.sinsonido);
         }
     }
-
+    public void endesarollo(View view){
+        Intent ayuda = new Intent(this,EnDesarrollo.class);
+        startActivity(ayuda);
+    }
 
 
     public void silencio(View view){

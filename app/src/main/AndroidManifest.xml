@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".EnDesarrollo"
+            android:exported="true" />
+        <activity
             android:name=".Advertencia"
             android:exported="true" />
         <activity
@@ -27,7 +30,6 @@
         <activity
             android:name=".pokedex.Pokedex"
             android:exported="true" />
-
         <activity
             android:name=".Menu"
             android:exported="true" />
@@ -46,7 +48,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
