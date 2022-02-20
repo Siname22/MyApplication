@@ -16,12 +16,12 @@ public class MainActivity extends AppCompatActivity {
     Button log;
     EditText name;
     EditText password;
-    static EditText email;
+    EditText email;
     String emailComprovado;
-    String nameComprovado;
+    /*String nameComprovado;
     String psswdComprovado;
 
-    /*boolean nValido = false;
+    boolean nValido = false;
     boolean eValido = false;
     boolean pValido = false;
     static String nombreIntroducido;
