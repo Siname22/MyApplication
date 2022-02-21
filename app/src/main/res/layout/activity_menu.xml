@@ -7,63 +7,6 @@
     android:background="@drawable/gradient_background"
     tools:context=".Menu">
 
-    <TextView
-        android:id="@+id/pokédex"
-        android:layout_width="175dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="148dp"
-        android:fontFamily="@font/pokemon4"
-        android:text="Pokédex"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/mapas"
-        app:layout_constraintHorizontal_bias="0.242"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo"
-        app:layout_constraintVertical_bias="0.007" />
-
-    <TextView
-        android:id="@+id/mapas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/pokemon4"
-        android:text="Mapas"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/mochila"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.828"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.634" />
-
-    <TextView
-        android:id="@+id/emulador"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/pokemon4"
-        android:text="Emulador"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.073"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pokeball"
-        app:layout_constraintVertical_bias="0.87" />
-
-    <TextView
-        android:id="@+id/mochila"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/pokemon4"
-        android:text="Mochila"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
-        app:layout_constraintStart_toEndOf="@+id/emulador"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.946" />
-
     <ImageView
         android:id="@+id/titulo"
         android:layout_width="411dp"
@@ -74,73 +17,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.095"
         app:srcCompat="@drawable/pokemontitulo" />
-
-    <ImageButton
-        android:id="@+id/pokeball"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginEnd="72dp"
-        android:background="#00FFFFFF"
-        android:contentDescription="@string/IB"
-        android:onClick="Poke"
-        app:layout_constraintBottom_toTopOf="@+id/pokédex"
-        app:layout_constraintEnd_toStartOf="@+id/imagenmapa"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/poke130"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageButton
-        android:id="@+id/imagenmapa"
-        android:layout_width="134dp"
-        android:layout_height="130dp"
-        android:background="#00FFFFFF"
-        android:contentDescription="@string/IB"
-        android:onClick="BMapas"
-        app:layout_constraintBottom_toTopOf="@+id/mapas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.453"
-        app:layout_constraintStart_toEndOf="@+id/pokédex"
-        app:layout_constraintTop_toBottomOf="@+id/titulo"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/mapa130" />
-
-    <ImageButton
-        android:id="@+id/imagenemulador"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginRight="72dp"
-        android:background="#00FFFFFF"
-        android:contentDescription="@string/IB"
-        android:onClick="BEmulador"
-        app:layout_constraintBottom_toTopOf="@+id/emulador"
-        app:layout_constraintEnd_toStartOf="@+id/imagenmochila"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pokédex"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/gamevoydefinitivo" />
-
-    <ImageButton
-        android:id="@+id/imagenmochila"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="3dp"
-        android:background="#00FFFFFF"
-        android:contentDescription="@string/IB"
-        android:onClick="BMochila"
-        app:layout_constraintBottom_toTopOf="@+id/mochila"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.356"
-        app:layout_constraintStart_toEndOf="@+id/emulador"
-        app:layout_constraintTop_toBottomOf="@+id/mapas"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/mochila130" />
 
     <ImageButton
         android:id="@+id/imageButton7"
@@ -172,5 +48,126 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ayudab"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="402dp"
+        android:layout_height="212dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo"
+        app:layout_constraintVertical_bias="0.038">
+
+        <LinearLayout
+            android:layout_width="196dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/pokeball"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:background="#00FFFFFF"
+                android:contentDescription="@string/IB"
+                android:onClick="Poke"
+                app:srcCompat="@drawable/poke130"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/pokédex"
+                android:layout_width="175dp"
+                android:layout_height="28dp"
+                android:fontFamily="@font/pokemon4"
+                android:text="Pokédex"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="214dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imagenmapa"
+                android:layout_width="134dp"
+                android:layout_height="130dp"
+                android:background="#00FFFFFF"
+                android:contentDescription="@string/IB"
+                android:onClick="BMapas"
+                app:srcCompat="@drawable/mapa130" />
+
+            <TextView
+                android:id="@+id/mapas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pokemon4"
+                android:text="Mapas"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="405dp"
+        android:layout_height="160dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imagenemulador"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:background="#00FFFFFF"
+                android:contentDescription="@string/IB"
+                android:onClick="BEmulador"
+                app:srcCompat="@drawable/pokemonamarillo" />
+
+            <TextView
+                android:id="@+id/emulador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pokemon4"
+                android:text="Juegos"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imagenmochila"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:background="#00FFFFFF"
+                android:contentDescription="@string/IB"
+                android:onClick="BMochila"
+                app:srcCompat="@drawable/mochila130" />
+
+            <TextView
+                android:id="@+id/mochila"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pokemon4"
+                android:text="Mochila"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

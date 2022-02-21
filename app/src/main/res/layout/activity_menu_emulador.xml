@@ -7,46 +7,32 @@
     android:background="@drawable/gradient_background"
     tools:context=".MenuEmulador">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/descargaemulador"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/tituloemulador" />
-
     <ImageButton
         android:id="@+id/descargaemulador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:background="#00FFFFFF"
-        android:onClick="Emulador"
+        android:onClick="endesarollo"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/gamevoydefinitivo"
+        app:srcCompat="@drawable/pokemonazul"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/descargarojo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="28dp"
         android:background="#00FFFFFF"
-        android:onClick="Rojo"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        android:onClick="endesarollo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.423"
         app:srcCompat="@drawable/pokemonrojo"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -56,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:background="#00FFFFFF"
-        android:onClick="Amarillo"
+        android:onClick="endesarollo"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:srcCompat="@drawable/pokemonamarillo"
@@ -66,11 +52,14 @@
         android:id="@+id/descargaplata"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:background="#00FFFFFF"
-        android:onClick="plata"
-        app:layout_constraintBottom_toTopOf="@+id/textView8"
-        app:layout_constraintStart_toStartOf="@+id/textView7"
+        android:onClick="endesarollo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.843"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.843"
         app:srcCompat="@drawable/pokemonplata"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -78,10 +67,9 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="52dp"
         android:fontFamily="@font/pokemon4"
-        android:text="Emulador"
+        android:text="Azul"
         android:textSize="24sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="parent" />
@@ -107,25 +95,24 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="33dp"
-        android:layout_marginLeft="33dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         android:layout_marginBottom="2dp"
         android:fontFamily="@font/pokemon4"
         android:text="Plata"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/descargaplata" />
+        app:layout_constraintTop_toBottomOf="@+id/descargaplata"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="199dp"
         android:layout_height="37dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="44dp"
         android:fontFamily="@font/pokemon4"
         android:text="Amarillo"
         android:textSize="24sp"
@@ -146,5 +133,17 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/sonido"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.103"
+        app:srcCompat="@drawable/juegos" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

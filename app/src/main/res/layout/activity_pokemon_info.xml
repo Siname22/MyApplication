@@ -4,38 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".pokedex.PokemonInfo">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="117dp"
         android:layout_height="25dp"
+        android:layout_marginBottom="8dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="79dp" />
+        app:layout_constraintBottom_toTopOf="@+id/imagePokemonInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="205dp"
-        android:layout_height="213dp"
-        tools:layout_editor_absoluteX="91dp"
-        tools:layout_editor_absoluteY="113dp"
+        android:id="@+id/imagePokemonInfo"
+        android:layout_width="233dp"
+        android:layout_height="215dp"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
         tools:srcCompat="@drawable/bulbasaur" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="164dp"
-        android:layout_height="38dp"
+        android:id="@+id/namePokemonInfo"
+        android:layout_width="300dp"
+        android:layout_height="103dp"
+        android:fontFamily="@font/pokemon4"
+        android:gravity="center"
         android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="42dp" />
+        android:textAllCaps="true"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.262" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/codePokemon"
         android:layout_width="79dp"
         android:layout_height="34dp"
+        android:layout_marginBottom="44dp"
+        android:fontFamily="@font/pokemon4"
         android:text="TextView"
-        tools:layout_editor_absoluteX="316dp"
-        tools:layout_editor_absoluteY="46dp" />
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/imagePokemonInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.43" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagePokemonInfo">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="INFO" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/stats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STATS" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/habilidades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HABILIDADES" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <TableLayout
+        android:id="@+id/fragmentContainerView"
+        android:name="com.example.myapplication.PokemonFragment"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

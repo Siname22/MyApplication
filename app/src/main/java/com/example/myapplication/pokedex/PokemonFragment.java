@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.pokedex;
 
 import android.os.Bundle;
 
@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.myapplication.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,11 +40,11 @@ public class PokemonFragment extends Fragment {
      * @return A new instance of fragment PokemonFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PokemonFragment newInstance(String param1, String param2) {
+    public static PokemonFragment newInstance(String param1) {
         PokemonFragment fragment = new PokemonFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        //args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -59,6 +62,9 @@ public class PokemonFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pokemon, container, false);
+        View view = inflater.inflate(R.layout.fragment_pokemon, container, false);
+        TextView txt = view.findViewById(R.id.textAboutInfo);
+        txt.setText(mParam1);
+        return view;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.myapplication.pokedex;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,18 +18,34 @@ import com.squareup.picasso.Picasso;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 public class CustomAdapter
         extends RecyclerView.Adapter<CustomAdapter.ViewHolder>
          implements  View.OnClickListener{
     Context ctx;
     ArrayList<Itm_pkm> itm_pkm;
+
+    public ArrayList<Itm_pkm> getItm_pkm() {
+        return itm_pkm;
+    }
+
+    public void setItm_pkm(ArrayList<Itm_pkm> itm_pkm) {
+        this.itm_pkm = itm_pkm;
+    }
+
+    ArrayList<Itm_pkm> itm_pkmOriginal;
+
     //Creo la variable de view para seleecionar el item
     private View.OnClickListener listener;
 
     public CustomAdapter(ArrayList<Itm_pkm> pokemos,Context ctx ) {
         this.ctx = ctx;
         this.itm_pkm = pokemos;
+        itm_pkmOriginal = new ArrayList<>();
+        itm_pkmOriginal.addAll(itm_pkm);
     }
     //Se llama cada vex que un item nuevo de la lista se va a ver,
     // y se va a reciclar uno anterior que ya no se va a ver
@@ -51,6 +68,30 @@ public class CustomAdapter
         //new DownloadImageTask(holder.image).execute(itm_pkm.get(position).getImgPokemon());
         Picasso.get().load(itm_pkm.get(position).getImgPokemon()).into(holder.image);
 
+    }
+
+    public void filtrado(String txtBuscar){
+        ArrayList<Itm_pkm> itm_pkm_busqueda = new ArrayList<>();
+        int longitud = txtBuscar.length();
+        if (longitud == 0){
+            itm_pkm.clear();
+            itm_pkm.addAll(itm_pkmOriginal);
+        }else{
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                List<Itm_pkm> collecion = itm_pkmOriginal.stream().filter(i -> i.getNombre().toLowerCase().
+                        contains(txtBuscar.toLowerCase())).collect(Collectors.toList());
+                itm_pkm_busqueda.addAll(collecion);
+            } else {
+                for (Itm_pkm pokemon: itm_pkmOriginal){
+                    if (pokemon.getNombre().toLowerCase().contains(txtBuscar.toLowerCase())){
+                        itm_pkm_busqueda.add(pokemon);
+                    }
+                }
+            }
+            itm_pkm.clear();
+            itm_pkm.addAll(itm_pkm_busqueda);
+        }
+        notifyDataSetChanged();
     }
 
     @Override

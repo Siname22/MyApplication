@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:scrollbarThumbHorizontal="@android:drawable/button_onoff_indicator_on"
+    tools:context=".pokedex.PokemonStatsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:id="@+id/statsVida"
+            android:layout_width="174dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/pokemon4"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:text="TextView"
+            android:textAlignment="center" />
+
+        <SeekBar
+            android:id="@+id/seekBarVida"
+            style="@android:style/Widget.Toolbar.Button.Navigation"
+            android:layout_width="237dp"
+            android:layout_height="23dp"
+            android:background="#00AE3434"
+            android:foregroundGravity="center"
+            android:max="255"
+            android:progressBackgroundTint="#AB8AE6"
+            android:scrollbarSize="8dp"
+            android:thumb="@drawable/image" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/statsPeso"
+            android:layout_width="174dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/pokemon4"
+            android:text="@string/statsPeso"
+            android:textAlignment="center" />
+
+        <SeekBar
+            android:id="@+id/seekBarPeso"
+            style="@android:style/Widget.Toolbar.Button.Navigation"
+            android:layout_width="237dp"
+            android:layout_height="23dp"
+            android:background="#00AE3434"
+            android:max="255"
+            android:progressBackgroundTint="#AB8AE6"
+            android:scrollbarSize="8dp"
+            android:thumb="@drawable/image" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/statsAtq"
+            android:layout_width="177dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/pokemon4"
+            android:text="TextView"
+            android:textAlignment="center" />
+
+        <SeekBar
+            android:id="@+id/seekBarAtq"
+            style="@android:style/Widget.Toolbar.Button.Navigation"
+            android:layout_width="237dp"
+            android:layout_height="23dp"
+            android:background="#00AE3434"
+            android:max="255"
+            android:progressBackgroundTint="#AB8AE6"
+            android:scrollbarSize="8dp"
+            android:thumb="@drawable/image" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/statsDefensa"
+            android:layout_width="177dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/pokemon4"
+            android:text="TextView"
+            android:textAlignment="center" />
+
+        <SeekBar
+            android:id="@+id/seekBarDefensa"
+            style="@android:style/Widget.Toolbar.Button.Navigation"
+            android:layout_width="237dp"
+            android:layout_height="23dp"
+            android:background="#00AE3434"
+            android:max="255"
+            android:progressBackgroundTint="#AB8AE6"
+            android:scrollbarSize="8dp"
+            android:thumb="@drawable/image" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
+        <TextView
+            android:id="@+id/statsAtqSpecial"
+            android:layout_width="177dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/pokemon4"
+            android:text="TextView"
+            android:textAlignment="center" />
+
+        <SeekBar
+            android:id="@+id/seekBarAtqSpecial"
+            style="@android:style/Widget.Toolbar.Button.Navigation"
+            android:layout_width="237dp"
+            android:layout_height="23dp"
+            android:background="#00AE3434"
+            android:max="255"
+            android:progressBackgroundTint="#AB8AE6"
+            android:scrollbarSize="8dp"
+            android:thumb="@drawable/image" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
+        <TextView
+            android:id="@+id/statsDefSpecial"
+            android:layout_width="177dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/pokemon4"
+            android:text="TextView"
+            android:textAlignment="center" />
+
+        <SeekBar
+            android:id="@+id/seekBarDefSpecial"
+            style="@android:style/Widget.Toolbar.Button.Navigation"
+            android:layout_width="237dp"
+            android:layout_height="23dp"
+            android:background="#00AE3434"
+            android:max="255"
+            android:progressBackgroundTint="#AB8AE6"
+            android:scrollbarSize="8dp"
+            android:thumb="@drawable/image" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
+        <TextView
+            android:id="@+id/statsSpeed"
+            android:layout_width="177dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/pokemon4"
+            android:text="TextView"
+            android:textAlignment="center" />
+
+        <SeekBar
+            android:id="@+id/seekBarSpeed"
+            style="@android:style/Widget.Toolbar.Button.Navigation"
+            android:layout_width="237dp"
+            android:layout_height="23dp"
+            android:background="#00AE3434"
+            android:max="255"
+            android:progressBackgroundTint="#AB8AE6"
+            android:scrollbarSize="8dp"
+            android:thumb="@drawable/image" />
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

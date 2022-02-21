@@ -9,7 +9,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.SearchView;
 import android.widget.Toast;
 import android.view.View;
 import android.widget.ImageButton;
@@ -24,6 +26,7 @@ import com.example.myapplication.pokedex.api.PokemonAPIService;
 import com.example.myapplication.pokedex.api.PokemonResult;
 import com.example.myapplication.pokedex.api.PokemonResultItem;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
@@ -33,19 +36,25 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Pokedex extends AppCompatActivity {
+public class Pokedex extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
-    private String rutaImagenes;
+
     private RecyclerView recyclerView;
     ArrayList<PokemonResultItem> pokemons;
     ImageButton img;
+
+    SearchView searchView;
+    CustomAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pokedex);
-
+        img = findViewById(R.id.sonidopokedex);
         recyclerView = findViewById(R.id.recyclerView);
+        searchView = findViewById(R.id.searchView);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         //Es un paso exclusivo de recylcerView
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
@@ -78,19 +87,41 @@ public class Pokedex extends AppCompatActivity {
                         }
                     }
                     // specify an adapter with the list to show
-                    CustomAdapter adapter = new CustomAdapter(items, Pokedex.this);
+                    adapter = new CustomAdapter(items, Pokedex.this);
                     recyclerView.setAdapter(adapter);
 
                     adapter.setOnClicklListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View view) {
-                            Toast.makeText(getApplicationContext(),"Seleccion: " +
-                                            pokemons.get(recyclerView.getChildAdapterPosition(view)).
-                                                    getName(), Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(Pokedex.this, PokemonInfo.class);
-                            i.putExtra("posicion", pokemons.get(recyclerView.
-                                    getChildAdapterPosition(view)).getUrl());
-                            startActivity(i);
+                        public void onClick(View v) {
+                            Log.i("Lo que cojo", String.valueOf(recyclerView.getChildAdapterPosition(v)));
+                            Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl(adapter.getItm_pkm().get(recyclerView.getChildAdapterPosition(v)).getUrl())
+                                .addConverterFactory(GsonConverterFactory.create(
+                                        new GsonBuilder().serializeNulls().create()
+                                ))
+                                .build();
+
+                            Log.i("url", adapter.getItm_pkm().get(recyclerView.getChildAdapterPosition(v)).getUrl());
+
+                            PokemonAPIService pokemonAPIService = retrofit.create(PokemonAPIService.class);
+                            Call<JsonObject> call = pokemonAPIService.getPokemonInfo();
+                            call.enqueue(new Callback<JsonObject>() {
+                                @Override
+                                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                                    Intent i = new Intent(Pokedex.this, PokemonInfo.class);
+                                    Toast.makeText(getApplicationContext(),"Seleccion: " +
+                                            adapter.getItm_pkm().get(recyclerView.getChildAdapterPosition(v)).
+                                                    getNombre(), Toast.LENGTH_SHORT).show();
+                                    Log.i("JSON", response.body().toString());
+                                    i.putExtra("datos", response.body().toString());
+                                    startActivity(i);
+                                }
+
+                                @Override
+                                public void onFailure(Call<JsonObject> call, Throwable t) {
+                                    Log.d("Error", t.toString());
+                                }
+                            });
                         }
                     });
                 } else {
@@ -103,16 +134,24 @@ public class Pokedex extends AppCompatActivity {
                 Log.d("Error", t.toString());
             }
         });
+        searchView.setOnQueryTextListener(this) ;
+    }
 
-        img = findViewById(R.id.sonidopokedex);
-
+    @Override
+    public boolean onQueryTextSubmit(String s) {
         if (Menu.conSonido) {
             img.setImageResource(R.drawable.sonido);
         } else {
             img.setImageResource(R.drawable.sinsonido);
         }
+        return false;
     }
 
+    @Override
+    public boolean onQueryTextChange(String s) {
+        adapter.filtrado(s);
+        return false;
+    }
     public void silencio(View view) {
         if (Menu.conSonido) {
             img.setImageResource(R.drawable.sinsonido);

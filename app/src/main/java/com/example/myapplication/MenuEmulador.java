@@ -52,6 +52,11 @@ public class MenuEmulador extends AppCompatActivity {
 
     }
 
+    public void endesarollo(View view){
+        Intent ayuda = new Intent(this,EnDesarrollo.class);
+        startActivity(ayuda);
+    }
+
     public static boolean isDownloadManagerAvailable(Context context) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
