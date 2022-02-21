@@ -13,19 +13,7 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button log;
-    EditText name;
-    EditText password;
-    EditText email;
-    String emailComprovado;
-    /*String nameComprovado;
-    String psswdComprovado;
 
-    boolean nValido = false;
-    boolean eValido = false;
-    boolean pValido = false;
-    static String nombreIntroducido;
-    static String psswd;*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

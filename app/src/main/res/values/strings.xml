@@ -13,4 +13,11 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="statsPeso">TextView</string>
+    <string name="pok_dex">Pokédex</string>
+    <string name="mapas">Mapas</string>
+    <string name="juegos">Juegos</string>
+    <string name="mochila">Mochila</string>
+    <string name="todo">TODO</string>
+    <string name="todo">TODO</string>
+    <string name="todo">TODO</string>
 </resources>

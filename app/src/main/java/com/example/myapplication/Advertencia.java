@@ -58,4 +58,10 @@ public class Advertencia extends AppCompatActivity {
 
 
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+       Menu.MediaPlayer.stop();
+    }
 }

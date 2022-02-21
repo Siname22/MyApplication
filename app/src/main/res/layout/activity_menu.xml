@@ -16,7 +16,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.095"
-        app:srcCompat="@drawable/pokemontitulo" />
+        app:srcCompat="@drawable/pokemontitulo"
+        android:contentDescription="@string/todo" />
 
     <ImageButton
         android:id="@+id/imageButton7"
@@ -24,6 +25,7 @@
         android:layout_height="90dp"
         android:layout_marginStart="313dp"
         android:background="#00FFFFFF"
+        android:contentDescription="@string/todo"
         android:onClick="silencio"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/sonido"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
 
     <ImageButton
         android:id="@+id/imageButton16"
@@ -47,7 +49,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ayudab"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:contentDescription="@string/todo" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -76,14 +79,14 @@
                 android:contentDescription="@string/IB"
                 android:onClick="Poke"
                 app:srcCompat="@drawable/poke130"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
 
             <TextView
                 android:id="@+id/pokédex"
                 android:layout_width="175dp"
                 android:layout_height="28dp"
                 android:fontFamily="@font/pokemon4"
-                android:text="Pokédex"
+                android:text="@string/pok_dex"
                 android:textSize="24sp" />
         </LinearLayout>
 
@@ -100,26 +103,29 @@
                 android:background="#00FFFFFF"
                 android:contentDescription="@string/IB"
                 android:onClick="BMapas"
-                app:srcCompat="@drawable/mapa130" />
+                app:srcCompat="@drawable/mapa130"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
                 android:id="@+id/mapas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pokemon4"
-                android:text="Mapas"
+                android:text="@string/mapas"
                 android:textSize="24sp" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="416dp"
+        android:layout_height="169dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.392">
 
         <LinearLayout
             android:layout_width="197dp"
@@ -141,7 +147,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pokemon4"
-                android:text="Juegos"
+                android:text="@string/juegos"
                 android:textSize="24sp" />
         </LinearLayout>
 
@@ -158,14 +164,15 @@
                 android:background="#00FFFFFF"
                 android:contentDescription="@string/IB"
                 android:onClick="BMochila"
-                app:srcCompat="@drawable/mochila130" />
+                app:srcCompat="@drawable/mochila130"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
                 android:id="@+id/mochila"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pokemon4"
-                android:text="Mochila"
+                android:text="@string/mochila"
                 android:textSize="24sp" />
         </LinearLayout>
     </LinearLayout>

@@ -14,7 +14,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-
+        <activity
+            android:name=".Plata"
+            android:exported="true" />
+        <activity
+            android:name=".Amarillo"
+            android:exported="true" />
+        <activity
+            android:name=".Rojo"
+            android:exported="true" />
+        <activity
+            android:name=".Azul"
+            android:exported="true" />
+        <activity
+            android:name=".Sinnoh"
+            android:exported="true" />
+        <activity
+            android:name=".Hoenn"
+            android:exported="true" />
+        <activity
+            android:name=".Johto"
+            android:exported="true" />
+        <activity
+            android:name=".Kanto"
+            android:exported="true" />
         <activity
             android:name=".EnDesarrollo"
             android:exported="true" />

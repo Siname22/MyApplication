@@ -35,6 +35,20 @@ public class MenuEmulador extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if(Menu.conSonido)
+        {
+            img.setImageResource(R.drawable.sonido);
+        }
+        else
+        {
+            System.out.println("MENU SIN SONIDO");
+            img.setImageResource(R.drawable.sinsonido);
+        }
+    }
+
     public void silencio(View view){
         if(Menu.conSonido)
         {
@@ -52,8 +66,23 @@ public class MenuEmulador extends AppCompatActivity {
 
     }
 
-    public void endesarollo(View view){
-        Intent ayuda = new Intent(this,EnDesarrollo.class);
+    public void azul(View view){
+        Intent ayuda = new Intent(this,Azul.class);
+        startActivity(ayuda);
+    }
+
+    public void rojo(View view){
+        Intent ayuda = new Intent(this,Rojo.class);
+        startActivity(ayuda);
+    }
+
+    public void plataa(View view){
+        Intent ayuda = new Intent(this,Plata.class);
+        startActivity(ayuda);
+    }
+
+    public void amarillo(View view){
+        Intent ayuda = new Intent(this,Amarillo.class);
         startActivity(ayuda);
     }
 
