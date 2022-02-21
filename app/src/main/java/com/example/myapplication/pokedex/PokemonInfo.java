@@ -1,37 +1,33 @@
 package com.example.myapplication.pokedex;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
+
 import com.example.myapplication.R;
-import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PokemonInfo extends AppCompatActivity
 {
-
     TextView nombrePokemon;
     TextView codePokemon;
     ImageView imagenPokemon;
-    TabItem statsTab;
-    TabLayout tabLayout;
-    FragmentManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -45,87 +41,57 @@ public class PokemonInfo extends AppCompatActivity
         }
     }
 
-        @SuppressLint("LongLogTag")
-        void consumirAPI() throws JSONException {
-            String pkmName;
-            int pesoPokemon = 0;
+    @SuppressLint("LongLogTag")
+    void consumirAPI() throws JSONException {
+        // Se recuperan los datos enviados
+        Intent intent = getIntent();
+        String datos = intent.getStringExtra("datos");
 
-            nombrePokemon = findViewById(R.id.namePokemonInfo);
-            codePokemon = findViewById(R.id.codePokemon);
-            imagenPokemon = findViewById(R.id.imagePokemonInfo);
-            tabLayout = findViewById(R.id.tabLayout);
-            statsTab = tabLayout.findViewById(R.id.stats);
-            manager = getSupportFragmentManager();
-            Intent i = getIntent();
-            String datos = i.getStringExtra("datos");
-            Log.i("datos",datos );
+        // Se convierten los datos a JSON
 
-            JSONObject infoPokemon = null;
-            infoPokemon = new JSONObject(datos);
-            pkmName = infoPokemon.getString("name");
-            pesoPokemon = infoPokemon.getInt("weight");
-            //hp = infoPokemon.getJSONObject()
+        JSONObject infoPokemon = new JSONObject(datos);
+        String pkmName = infoPokemon.getString("name");
 
-            //int statsHp = infoPokemon.get("stats").getAsJsonObject().get("base_stat").getAsInt();
+        // Se enlazan los controles
+        nombrePokemon = findViewById(R.id.namePokemonInfo);
+        codePokemon = findViewById(R.id.codePokemon);
+        imagenPokemon = findViewById(R.id.imagePokemonInfo);
 
+        // Se carga la imagen del pokemon
+        Picasso.get().load(
+                infoPokemon.getJSONObject("sprites").
+                        getJSONObject("other").
+                        getJSONObject("official-artwork").getString("front_default")
+        ).into(imagenPokemon);
+        // Datos del pokemom
+        nombrePokemon.setText(pkmName);
+        codePokemon.setText(infoPokemon.getString("id"));
 
-            JSONArray arrayStats = infoPokemon.getJSONArray("stats");
-
-            Log.i("peso", String.valueOf(pesoPokemon));
-            //Log.i("hp", hp);
-            //Log.i("stats", String.valueOf(statsHp));
-            Picasso.get().load(
-                    infoPokemon.getJSONObject("sprites").
-                            getJSONObject("other").
-                            getJSONObject("official-artwork").getString("front_default")
-            ).into(imagenPokemon);
-
-
-            nombrePokemon.setText(pkmName);
-
-            Log.i("nombre", pkmName);
-
-            codePokemon.setText(infoPokemon.getString("id"));
-            Log.i("codigo", infoPokemon.getString("id"));
-            int finalPesoPokemon = pesoPokemon;
-
-            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-                @Override
-                public void onTabSelected(TabLayout.Tab tab) {
-                    if(tab.getPosition() == 0)
-                    {
-                        System.out.println("HOLAAAAAAAAAAAAAAAAAAAAAAAAAA");
-                        FragmentTransaction transaction = manager.beginTransaction();
-                        PokemonFragment fragment = PokemonFragment.newInstance(pkmName);
-                        transaction.replace(R.id.fragmentContainerView, fragment).commit();
-
-                    } if (tab.getPosition() == 1){
-                        System.out.println("BBBBBBBBBBB");
-                        FragmentTransaction transaction = manager.beginTransaction();
-                        PokemonStatsFragment fragment;
-                        fragment = PokemonStatsFragment.newInstance(
-                                String.valueOf(finalPesoPokemon), arrayStats.toString());
-                        transaction.replace(R.id.fragmentContainerView, fragment).commit();
-                    }
-                }
-
-                @Override
-                public void onTabUnselected(TabLayout.Tab tab) {
-                    FragmentTransaction transaction = manager.beginTransaction();
-                    PokemonFragment fragment = PokemonFragment.newInstance(pkmName);
-                    transaction.replace(R.id.fragmentContainerView, fragment).commit();
-
-                }
-
-                @Override
-                public void onTabReselected(TabLayout.Tab tab) {
-
-                }
-
-
-            });
+        ViewPager2 mViewPager2 = findViewById(R.id.mViewPager2);
+        TabLayout mTabLayout = findViewById(R.id.mTabLayout);
+        // Se cargan los fragmentos
+        List<Fragment> fragmentList = new ArrayList<>();
+         String[] titles = {"INFO", "STATS", "HABILIDADES"};
+        for (int i = 0; i < titles.length ; i++) {
+            fragmentList.add(PokemonFragment.newInstance(i, datos));
         }
-
-
-
+        mViewPager2.setAdapter(new FragmentStateAdapter(this) {
+            @NonNull
+            @Override
+            public Fragment createFragment(int position) {
+                return fragmentList.get(position);
+            }
+            @Override
+            public int getItemCount() {
+                return fragmentList.size();
+            }
+        });
+        TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(mTabLayout, mViewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                tab.setText(titles[position]);
+            }
+        });
+        tabLayoutMediator.attach();
+    }
 }

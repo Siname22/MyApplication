@@ -1,25 +1,19 @@
 package com.example.myapplication.pokedex;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.Toast;
-import android.view.View;
-import android.widget.ImageButton;
 
-import com.example.myapplication.R;
-import com.example.myapplication.pokedex.api.PokemonAPIService;
-import com.example.myapplication.pokedex.api.PokemonResult;
-import com.example.myapplication.pokedex.api.PokemonResultItem;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.myapplication.Menu;
 import com.example.myapplication.R;
 import com.example.myapplication.pokedex.api.PokemonAPIService;
@@ -27,6 +21,8 @@ import com.example.myapplication.pokedex.api.PokemonResult;
 import com.example.myapplication.pokedex.api.PokemonResultItem;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -108,13 +104,30 @@ public class Pokedex extends AppCompatActivity implements SearchView.OnQueryText
                             call.enqueue(new Callback<JsonObject>() {
                                 @Override
                                 public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                                    Intent i = new Intent(Pokedex.this, PokemonInfo.class);
-                                    Toast.makeText(getApplicationContext(),"Seleccion: " +
-                                            adapter.getItm_pkm().get(recyclerView.getChildAdapterPosition(v)).
-                                                    getNombre(), Toast.LENGTH_SHORT).show();
-                                    Log.i("JSON", response.body().toString());
-                                    i.putExtra("datos", response.body().toString());
-                                    startActivity(i);
+                                    try {
+                                        Intent i = new Intent(Pokedex.this, PokemonInfo.class);
+                                        Toast.makeText(getApplicationContext(),"Seleccion: " +
+                                                adapter.getItm_pkm().get(recyclerView.getChildAdapterPosition(v)).
+                                                        getNombre(), Toast.LENGTH_SHORT).show();
+                                        String json = response.body().toString();
+
+                                        // Como algunos pokemon fallan sin ningún tipo de traza de error
+                                        // intento esto para ver si es por el tamaño del json
+
+                                        JSONObject jsonObjectOriginal = new JSONObject(json);
+                                        JSONObject jsonObject = new JSONObject(json);
+                                        jsonObject.put("weight", jsonObjectOriginal.getInt("weight"));
+                                        jsonObject.put("abilities", jsonObjectOriginal.getJSONArray("abilities"));
+                                        jsonObject.put("stats", jsonObjectOriginal.getJSONArray("stats"));
+                                        jsonObject.put("sprites", jsonObjectOriginal.getJSONObject("sprites"));
+
+                                        Log.i("JSON", jsonObject.toString());
+
+                                        i.putExtra("datos", jsonObject.toString());
+                                        startActivity(i);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
                                 }
 
                                 @Override
@@ -166,64 +179,3 @@ public class Pokedex extends AppCompatActivity implements SearchView.OnQueryText
 
     }
 }
-
-        /*
-        try {
-            urlaaConsumir = new URL("https://pokeapi.co/api/v2/pokemon/?limit=898");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                InputStream iS = null;
-                try {
-                    HttpURLConnection connection = null;
-                    connection = (HttpURLConnection) urlaaConsumir.openConnection();
-                    iS = connection.getInputStream();
-                    InputStreamReader iSR = new InputStreamReader(iS);
-                    BufferedReader bf = new BufferedReader(iSR);
-                    String linea = "";
-                    String resultado = "";
-                    while ((linea = bf.readLine()) != null) {
-                        resultado += linea;
-                    }
-                    Log.i("RESULTADO", resultado);
-                    //parsea todo el resultado en formato JSON
-                    JSONObject jsonResultado = new JSONObject(resultado);
-                    JSONArray array = jsonResultado.getJSONArray("results");
-                    Log.i("results", array.toString());
-                    String nombre;
-                    String url;
-                    for (int i = 0; i < array.length(); i++) {
-                        JSONObject pkm = array.getJSONObject(i);
-                        Log.i("results", pkm.toString());
-                        nombre = pkm.getString("name");
-                        url = pkm.getString("url");
-                        Log.i("name", nombre);
-                        Log.i("url", url);
-                        nombres.add(nombre);
-                        urls.add(url);
-                        pokemons.add(new itm_pkm(nombre, url));
-                    }
-                } catch (IOException | JSONException ioException) {
-                    ioException.printStackTrace();
-                }
-            }
-        }).start();
-
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < nombres.size(); i++) {
-                    pokemons.add(new itm_pkm(nombres.get(i), urls.get(i)));
-                }
-                CustomAdapter adapter = new CustomAdapter(Pokedex.this, pokemons);
-                recyclerView.setAdapter(adapter);
-
-            }
-        });
-
-    }
-    */
-
