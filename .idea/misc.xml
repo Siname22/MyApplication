@@ -3,10 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_advertencia.xml" value="0.38697916666666665" />
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_amarillo.xml" value="0.38697916666666665" />
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_ayuda.xml" value="0.22" />
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_azul.xml" value="0.38697916666666665" />
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_en_desarrollo.xml" value="0.38697916666666665" />
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_hoenn.xml" value="0.38697916666666665" />
         <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_itm_pkm.xml" value="0.5" />
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_johto.xml" value="0.23505434782608695" />
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_kanto.xml" value="0.38697916666666665" />
         <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_main.xml" value="0.21770833333333334" />
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_menu.xml" value="0.38697916666666665" />
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_menu_emulador.xml" value="0.33" />
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_menu_mochila.xml" value="0.38697916666666665" />
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_menumapas.xml" value="0.33" />
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_plata.xml" value="0.23505434782608695" />
         <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_pokedex.xml" value="0.21770833333333334" />
         <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_pokemon_info.xml" value="0.33" />
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_rojo.xml" value="0.23505434782608695" />
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/activity_sinnoh.xml" value="0.38697916666666665" />
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/fragment_pokemon.xml" value="0.23505434782608695" />
+        <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/fragment_pokemon_habilidades.xml" value="0.38697916666666665" />
         <entry key="..\:/GDAM/Pokemon-master/app/src/main/res/layout/fragment_pokemon_stats.xml" value="0.5" />
         <entry key="..\:/POKEMONAPP/app/src/main/res/drawable/dividir_color.xml" value="0.22135416666666666" />
         <entry key="..\:/POKEMONAPP/app/src/main/res/drawable/gradient_background.xml" value="0.3828125" />
